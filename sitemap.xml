@@ -1,45 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://aishwaryabeautyparlour.in/</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://aishwaryabeautyparlour.vercel.app/</loc>
   </url>
   <url>
-    <loc>https://aishwaryabeautyparlour.in/about</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://aishwaryabeautyparlour.vercel.app/about.html</loc>
   </url>
   <url>
-    <loc>https://aishwaryabeautyparlour.in/services</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://aishwaryabeautyparlour.vercel.app/services.html</loc>
   </url>
   <url>
-    <loc>https://aishwaryabeautyparlour.in/bridal-makeup</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <loc>https://aishwaryabeautyparlour.vercel.app/bridal-makeup.html</loc>
   </url>
   <url>
-    <loc>https://aishwaryabeautyparlour.in/gallery</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://aishwaryabeautyparlour.vercel.app/gallery.html</loc>
   </url>
   <url>
-    <loc>https://aishwaryabeautyparlour.in/location</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <loc>https://aishwaryabeautyparlour.vercel.app/location.html</loc>
   </url>
   <url>
-    <loc>https://aishwaryabeautyparlour.in/contact</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://aishwaryabeautyparlour.vercel.app/contact.html</loc>
   </url>
 </urlset>
