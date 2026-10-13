@@ -65,10 +65,14 @@ python -m http.server 3000
 ```
 Open `http://localhost:3000/` in your web browser.
 
+### Production Deployment:
+- **Primary Canonical Production (Vercel)**: `https://aishwaryabeautyparlour.vercel.app/`
+- **Static Mirror (GitHub Pages)**: `https://aatishdoke20.github.io/aishwarya-beauty-parlour/`
+
 ### Deploying to GitHub Pages:
 1. Go to repository **Settings** > **Pages**.
 2. Under **Build and deployment** > **Branch**, select `main` / `(root)`.
-3. Click **Save**. The website will be live at `https://aatishdoke20.github.io/aishwarya-beauty-parlour/`.
+3. Click **Save**.
 
 ---
 
