@@ -45,3 +45,4 @@ files.forEach(f => {
   fs.writeFileSync(filePath, content, 'utf8');
   console.log('✅ Updated navigation in:', f);
 });
+

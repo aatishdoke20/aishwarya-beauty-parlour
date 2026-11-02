@@ -61,3 +61,4 @@ module.exports = async function handler(req, res) {
     message: `Post "${cleanSlug}" deleted successfully. Vercel deployment triggered.`
   });
 };
+

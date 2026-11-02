@@ -102,3 +102,4 @@ module.exports = async function handler(req, res) {
     message: 'Image uploaded and processed successfully.'
   });
 };
+
