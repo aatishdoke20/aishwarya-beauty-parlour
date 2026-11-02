@@ -4,7 +4,7 @@
   "description": "Aishwarya Beauty Parlour - Official website and Git-backed blog CMS",
   "private": true,
   "scripts": {
-    "build": "node scripts/build-blog.js",
+    "build-blog": "node scripts/build-blog.js",
     "test": "node scripts/test-blog.js && node scripts/verify_seo.js",
     "serve": "node scripts/serve.js"
   },

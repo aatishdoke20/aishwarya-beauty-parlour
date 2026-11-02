@@ -68,10 +68,6 @@ module.exports = async function handler(req, res) {
     const localDir = path.join(ROOT_DIR, 'images', 'blog', cleanSlug);
     fs.mkdirSync(localDir, { recursive: true });
     fs.writeFileSync(path.join(localDir, cleanName), buffer);
-
-    const publicDir = path.join(ROOT_DIR, 'public', 'images', 'blog', cleanSlug);
-    fs.mkdirSync(publicDir, { recursive: true });
-    fs.writeFileSync(path.join(publicDir, cleanName), buffer);
   } catch (e) {
     // Disk write may fail on Vercel runtime, handled gracefully
   }
