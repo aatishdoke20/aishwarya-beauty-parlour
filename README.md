@@ -34,6 +34,10 @@ Optimized and tested across 10 responsive breakpoints with **zero horizontal ove
 | `gallery.html` | **Portfolio Gallery** | Studio transformation photos, before & after showcases, and lightbox inspection |
 | `location.html` | **Location & Maps** | Interactive Google Maps embed, landmarks, travel routes from nearby talukas, and operating hours |
 | `contact.html` | **Contact & Inquiries** | 1-tap WhatsApp booking, direct calling, and physical address navigation |
+| `blog/index.html` | **Beauty Blog** | Editorial blog hub, category filter tabs, featured guides, and consultation CTAs |
+| `admin/blog/` | **Owner CMS** | Secure Git-backed publishing dashboard with markdown editor, live preview, and alt-text validation |
+
+> 📖 **Blog & CMS Publishing Guide**: See [README-BLOG-CMS.md](README-BLOG-CMS.md) for complete details on Vercel environment variables, GitHub publishing setup, and content authoring.
 
 ---
 

@@ -12,6 +12,9 @@ const pages = [
   { file: 'gallery.html', canonical: `${EXPECTED_DOMAIN}/gallery.html` },
   { file: 'location.html', canonical: `${EXPECTED_DOMAIN}/location.html` },
   { file: 'contact.html', canonical: `${EXPECTED_DOMAIN}/contact.html` },
+  { file: 'blog/index.html', canonical: `${EXPECTED_DOMAIN}/blog/` },
+  { file: 'blog/ladies-haircut-hair-spa-manchar/index.html', canonical: `${EXPECTED_DOMAIN}/blog/ladies-haircut-hair-spa-manchar/` },
+  { file: 'blog/maharashtrian-bridal-makeup-manchar/index.html', canonical: `${EXPECTED_DOMAIN}/blog/maharashtrian-bridal-makeup-manchar/` },
 ];
 
 let errors = [];

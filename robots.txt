@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /blog/
+Disallow: /admin/
+Disallow: /api/
 
 Sitemap: https://aishwaryabeautyparlour.vercel.app/sitemap.xml

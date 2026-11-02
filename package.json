@@ -1,0 +1,20 @@
+{
+  "name": "aishwarya-beauty-parlour",
+  "version": "1.0.0",
+  "description": "Aishwarya Beauty Parlour - Official website and Git-backed blog CMS",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-blog.js",
+    "test": "node scripts/test-blog.js && node scripts/verify_seo.js",
+    "serve": "node scripts/serve.js"
+  },
+  "keywords": [
+    "beauty-parlour",
+    "ladies-salon",
+    "manchar",
+    "blog",
+    "cms"
+  ],
+  "author": "Aishwarya Beauty Parlour",
+  "license": "UNLICENSED"
+}

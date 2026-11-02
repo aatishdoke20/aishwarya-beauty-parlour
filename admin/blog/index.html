@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Blog Publishing CMS | Aishwarya Beauty Parlour</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23FAF7F2%22 stroke=%22%23B5893B%22 stroke-width=%224%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2246%22 font-weight=%22bold%22 fill=%22%238C6521%22 text-anchor=%22middle%22>A</text></svg>">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marcellus&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=3.0">
+  <link rel="stylesheet" href="/css/blog.css?v=1.0">
+
+  <style>
+    /* CMS Dashboard and Editor specific styles */
+    .cms-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    .cms-topbar {
+      background: var(--color-bg-dark);
+      color: var(--color-text-light);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cms-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+    }
+    .cms-crest {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-bg-ivory);
+      color: var(--color-accent-gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    .cms-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cms-nav-btn {
+      color: var(--color-text-light);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .cms-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Login Box */
+    .login-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 22, 20, 0.75);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 1rem;
+    }
+    .login-box {
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-border-gold);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-elevated);
+      max-width: 440px;
+      width: 100%;
+      padding: 2.25rem;
+      text-align: center;
+    }
+    .login-crest {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--color-bg-ivory);
+      border: 2px solid var(--color-accent-gold);
+      color: var(--color-accent-gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-editorial);
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0 auto 1.25rem;
+    }
+    .login-box h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--color-text-charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .login-box p {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-espresso);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Status Bar */
+    .status-bar-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+    }
+    .status-pill-green {
+      background: #E6F4EA;
+      color: #137333;
+      border: 1px solid #CEEAD6;
+    }
+    .status-pill-amber {
+      background: #FEF7E0;
+      color: #B06000;
+      border: 1px solid #FEEFC3;
+    }
+
+    /* Editor Layout */
+    .editor-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 992px) {
+      .editor-layout {
+        grid-template-columns: 2.5fr 1fr;
+      }
+    }
+
+    .editor-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      padding: 0.5rem;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-border-subtle);
+      border-bottom: none;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+    .tb-btn {
+      padding: 0.3rem 0.6rem;
+      background: var(--color-bg-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-xs);
+      font-size: var(--font-size-xs);
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--color-text-charcoal);
+    }
+    .tb-btn:hover {
+      background: var(--color-accent-gold-light);
+      border-color: var(--color-accent-gold);
+    }
+
+    /* Live Preview Tabs */
+    .editor-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .editor-tab-btn {
+      padding: 0.5rem 1rem;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+    .editor-tab-btn.active {
+      background: var(--color-accent-blush-dark);
+      color: #FFFFFF;
+      border-color: var(--color-accent-blush-dark);
+    }
+
+    .live-preview-box {
+      border: 1px solid var(--color-border-gold);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      background: #FFFFFF;
+      min-height: 400px;
+      overflow-y: auto;
+    }
+
+    /* Modal dialog */
+    .cms-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .cms-modal.open {
+      display: flex;
+    }
+    .cms-modal-content {
+      background: var(--color-bg-surface);
+      border-radius: var(--radius-card);
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid var(--color-border-gold);
+      box-shadow: var(--shadow-elevated);
+    }
+  </style>
+</head>
+<body class="admin-wrap">
+
+  <!-- Top Announcement Bar -->
+  <header class="cms-topbar">
+    <div class="cms-brand">
+      <div class="cms-crest">A</div>
+      <span>Aishwarya Beauty Parlour • Owner Blog CMS</span>
+    </div>
+    <div class="cms-nav-links">
+      <span id="authStatusText" style="font-size: var(--font-size-xs); opacity: 0.85;">Checking status...</span>
+      <button type="button" class="cms-nav-btn" id="openStatusModalBtn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Setup Checklist
+      </button>
+      <a href="/blog/" target="_blank" class="cms-nav-btn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        View Live Blog
+      </a>
+      <button type="button" class="cms-nav-btn" id="logoutBtn" style="display: none; background: #C62828;">Sign Out</button>
+    </div>
+  </header>
+
+  <!-- Login Modal Overlay (shown when unauthenticated) -->
+  <div class="login-overlay" id="loginOverlay" style="display: none;">
+    <div class="login-box">
+      <div class="login-crest">A</div>
+      <h2>Owner Sign In</h2>
+      <p>Enter your owner credentials to manage articles and publish updates to Aishwarya Beauty Parlour.</p>
+
+      <form id="loginForm">
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="loginEmail">Admin Email</label>
+          <input type="email" id="loginEmail" class="form-input" required placeholder="owner@example.com">
+        </div>
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-input" required placeholder="••••••••••••">
+        </div>
+        <div id="loginError" class="validation-alert alert-error" style="display: none; text-align: left;"></div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+          <span>Sign In to Editor</span>
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem; font-size: var(--font-size-xs); color: var(--color-text-muted);">
+        Need help? Check <button type="button" id="loginSetupHelpBtn" style="color: var(--color-accent-blush-dark); text-decoration: underline;">Vercel Environment Setup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main CMS Application -->
+  <main class="cms-container" id="cmsApp">
+    
+    <!-- System Connection Banner -->
+    <div id="systemBanner" style="margin-bottom: 1.5rem;"></div>
+
+    <!-- VIEW 1: DASHBOARD VIEW (List of Posts) -->
+    <section id="dashboardView">
+      <div class="admin-header-row">
+        <div>
+          <h1 class="blog-hero-title" style="font-size: 2rem; margin: 0;">Blog Content Manager</h1>
+          <p style="font-size: var(--font-size-sm); color: var(--color-text-espresso);">
+            Manage published articles, edit drafts, and commit new posts directly to your Git repository.
+          </p>
+        </div>
+        <button type="button" class="btn btn-primary" id="newArticleBtn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <span>Create New Article</span>
+        </button>
+      </div>
+
+      <div class="admin-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div style="display: flex; gap: 0.5rem;" id="dashboardFilters">
+            <button type="button" class="blog-category-btn active" data-filter="all">All Posts</button>
+            <button type="button" class="blog-category-btn" data-filter="published">Published</button>
+            <button type="button" class="blog-category-btn" data-filter="draft">Drafts</button>
+          </div>
+          <span id="postsCountText" style="font-size: var(--font-size-xs); color: var(--color-text-muted);"></span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title / Slug</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Reading Time</th>
+                <th>Published / Updated</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="postsTableBody">
+              <tr>
+                <td colspan="6" style="text-align: center; padding: 2rem; color: var(--color-text-muted);">
+                  Loading posts...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: POST EDITOR VIEW -->
+    <section id="editorView" style="display: none;">
+      <div class="admin-header-row">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button type="button" class="btn btn-outline-gold" id="backToDashBtn">
+            &larr; Back to Posts
+          </button>
+          <div>
+            <h2 id="editorTitleDisplay" style="font-family: var(--font-heading); font-size: 1.5rem; margin: 0;">New Article</h2>
+            <div id="editorAutosaveIndicator" style="font-size: var(--font-size-xs); color: var(--color-text-muted);">Autosave active</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline-gold" id="saveDraftBtn">Save Draft</button>
+          <button type="button" class="btn btn-whatsapp" id="publishBtn">Publish to Site</button>
+        </div>
+      </div>
+
+      <div id="editorAlertBox" style="margin-bottom: 1rem;"></div>
+
+      <form id="postEditorForm">
+        <div class="editor-layout">
+          
+          <!-- Left Column: Content -->
+          <div>
+            <div class="admin-card">
+              <div class="form-group">
+                <label class="form-label" for="postTitle">Article Title / H1 <span style="color:#C62828;">*</span></label>
+                <input type="text" id="postTitle" class="form-input" required placeholder="e.g. Ladies Haircut and Hair Spa in Manchar: Choosing a Style">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="postSlug">URL Slug (canonical path) <span style="color:#C62828;">*</span></label>
+                <input type="text" id="postSlug" class="form-input" required placeholder="e.g. ladies-haircut-hair-spa-manchar">
+                <div class="form-help">Lowercase letters, numbers, and hyphens only. Will be accessible at: <code>/blog/[slug]/</code></div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="postExcerpt">Short Standfirst / Excerpt <span style="color:#C62828;">*</span></label>
+                <textarea id="postExcerpt" class="form-textarea" rows="3" required placeholder="A concise 40-60 word overview answering customer questions directly."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Featured Image &amp; Alt Text <span style="color:#C62828;">*</span></label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                  <div>
+                    <input type="text" id="postImageSrc" class="form-input" required placeholder="/images/blog/photo.jpg">
+                    <div style="margin-top: 0.5rem;">
+                      <input type="file" id="imageUploadInput" accept="image/jpeg,image/png,image/webp" style="display: none;">
+                      <button type="button" class="btn btn-outline-gold" style="font-size: var(--font-size-xs);" onclick="document.getElementById('imageUploadInput').click()">
+                        Upload Local Image File
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <input type="text" id="postImageAlt" class="form-input" required placeholder="Required descriptive alt text (what is shown in the image)">
+                    <input type="text" id="postImageCaption" class="form-input" style="margin-top: 0.5rem;" placeholder="Optional caption / illustration note">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Markdown Body -->
+              <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                  <label class="form-label" style="margin-bottom: 0;">Article Body (Markdown) <span style="color:#C62828;">*</span></label>
+                  <div class="editor-tabs" style="margin-bottom: 0;">
+                    <button type="button" class="editor-tab-btn active" id="tabWrite">Write Markdown</button>
+                    <button type="button" class="editor-tab-btn" id="tabPreview">Live Public Preview</button>
+                  </div>
+                </div>
+
+                <!-- Formatting Toolbar -->
+                <div class="editor-toolbar" id="mdToolbar">
+                  <button type="button" class="tb-btn" data-syntax="## ">H2</button>
+                  <button type="button" class="tb-btn" data-syntax="### ">H3</button>
+                  <button type="button" class="tb-btn" data-syntax="**|**">Bold</button>
+                  <button type="button" class="tb-btn" data-syntax="*|*">Italic</button>
+                  <button type="button" class="tb-btn" data-syntax="- ">List</button>
+                  <button type="button" class="tb-btn" data-syntax="> ">Quote</button>
+                  <button type="button" class="tb-btn" id="tbLinkBtn">Link</button>
+                  <button type="button" class="tb-btn" id="tbImgBtn">Insert Image (with Alt)</button>
+                  <button type="button" class="tb-btn" id="tbTableBtn">Table</button>
+                </div>
+
+                <div id="writePane">
+                  <textarea id="postBody" class="form-textarea" rows="18" style="font-family: monospace; border-radius: 0 0 var(--radius-sm) var(--radius-sm); border-top: none;" required placeholder="Write your full guide here in markdown..."></textarea>
+                  <div style="display: flex; justify-content: space-between; font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: 0.35rem;">
+                    <span id="wordCountText">0 words</span>
+                    <span id="readingTimeText">~1 min read</span>
+                  </div>
+                </div>
+
+                <div id="previewPane" style="display: none;">
+                  <div class="live-preview-box article-prose" id="livePreviewContainer"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Settings & SEO -->
+          <div>
+            <div class="admin-card">
+              <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 1rem;">Post Settings</h3>
+
+              <div class="form-group">
+                <label class="form-label" for="postCategory">Category <span style="color:#C62828;">*</span></label>
+                <select id="postCategory" class="form-select">
+                  <option value="Haircare & Styling">Haircare &amp; Styling</option>
+                  <option value="Bridal Makeup & Styling">Bridal Makeup &amp; Styling</option>
+                  <option value="Skincare & Facials">Skincare &amp; Facials</option>
+                  <option value="Salon Advice">Salon Advice</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="postStatus">Publishing Status <span style="color:#C62828;">*</span></label>
+                <select id="postStatus" class="form-select">
+                  <option value="draft">Draft (Private, not indexable)</option>
+                  <option value="published">Published (Live &amp; in Sitemap)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="postAuthor">Author</label>
+                <input type="text" id="postAuthor" class="form-input" value="Varsha Doke">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="postDate">Published Date</label>
+                <input type="date" id="postDate" class="form-input">
+              </div>
+
+              <hr style="border: none; border-top: 1px solid var(--color-border-subtle); margin: 1.5rem 0;">
+
+              <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 1rem;">SEO &amp; Social Metadata</h3>
+
+              <div class="form-group">
+                <label class="form-label" for="seoTitle">SEO Title Tag <span style="color:#C62828;">*</span></label>
+                <input type="text" id="seoTitle" class="form-input" required placeholder="Target 50-60 chars">
+                <div class="form-help"><span id="seoTitleLen">0</span> / 60 characters</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="seoDesc">Meta Description <span style="color:#C62828;">*</span></label>
+                <textarea id="seoDesc" class="form-textarea" rows="3" required placeholder="Target 140-160 chars"></textarea>
+                <div class="form-help"><span id="seoDescLen">0</span> / 160 characters</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="seoFocusKeyword">Focus Keyword Phrase</label>
+                <input type="text" id="seoFocusKeyword" class="form-input" placeholder="e.g. ladies haircut in Manchar">
+              </div>
+
+              <!-- Real-time SEO Checks Alert -->
+              <div id="seoChecklist" style="margin-top: 1rem; font-size: var(--font-size-xs);"></div>
+
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Setup Checklist Modal -->
+  <div class="cms-modal" id="statusModal">
+    <div class="cms-modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; margin: 0;">Publishing Configuration Checklist</h3>
+        <button type="button" class="btn btn-outline-gold" style="padding: 0.2rem 0.6rem;" onclick="document.getElementById('statusModal').classList.remove('open')">&times;</button>
+      </div>
+
+      <p style="font-size: var(--font-size-sm); color: var(--color-text-espresso); margin-bottom: 1.25rem;">
+        This Git-backed CMS publishes posts by creating commits in your GitHub repository, which triggers automatic Vercel production deployments.
+      </p>
+
+      <div id="statusChecklistBody" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <!-- Filled by JS -->
+      </div>
+
+      <div style="background: var(--color-bg-card-warm); padding: 1rem; border-radius: var(--radius-md); font-size: var(--font-size-xs);">
+        <strong>How to configure:</strong>
+        <ol style="margin: 0.5rem 0 0 1.25rem; line-height: 1.6;">
+          <li>Go to your <strong>Vercel Dashboard &rarr; Project Settings &rarr; Environment Variables</strong>.</li>
+          <li>Add each of the missing variables listed above.</li>
+          <li>Redeploy the project on Vercel to activate the new variables.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Client-side CMS Script -->
+  <script>
+    // State management
+    let state = {
+      authenticated: false,
+      userEmail: null,
+      posts: [],
+      currentPost: null,
+      systemStatus: null
+    };
+
+    // DOM Elements
+    const loginOverlay = document.getElementById('loginOverlay');
+    const loginForm = document.getElementById('loginForm');
+    const loginError = document.getElementById('loginError');
+    const authStatusText = document.getElementById('authStatusText');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const systemBanner = document.getElementById('systemBanner');
+    const dashboardView = document.getElementById('dashboardView');
+    const editorView = document.getElementById('editorView');
+    const postsTableBody = document.getElementById('postsTableBody');
+    const postsCountText = document.getElementById('postsCountText');
+    const newArticleBtn = document.getElementById('newArticleBtn');
+    const backToDashBtn = document.getElementById('backToDashBtn');
+    const saveDraftBtn = document.getElementById('saveDraftBtn');
+    const publishBtn = document.getElementById('publishBtn');
+    const postEditorForm = document.getElementById('postEditorForm');
+    const editorAlertBox = document.getElementById('editorAlertBox');
+    const statusModal = document.getElementById('statusModal');
+    const openStatusModalBtn = document.getElementById('openStatusModalBtn');
+
+    // Initialize
+    async function init() {
+      await checkStatus();
+      await checkAuth();
+      if (state.authenticated) {
+        await loadPosts();
+      }
+    }
+
+    async function checkStatus() {
+      try {
+        const res = await fetch('/api/status');
+        const data = await res.json();
+        state.systemStatus = data;
+        renderSystemBanner(data);
+        renderChecklist(data);
+      } catch (e) {
+        console.warn('API status check offline or running purely static:', e);
+      }
+    }
+
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth?action=session');
+        const data = await res.json();
+        if (data.authenticated) {
+          state.authenticated = true;
+          state.userEmail = data.email;
+          authStatusText.textContent = `Signed in as ${data.email}`;
+          logoutBtn.style.display = 'inline-flex';
+          loginOverlay.style.display = 'none';
+        } else {
+          state.authenticated = false;
+          authStatusText.textContent = 'Not signed in';
+          logoutBtn.style.display = 'none';
+          loginOverlay.style.display = 'flex';
+        }
+      } catch (e) {
+        loginOverlay.style.display = 'flex';
+      }
+    }
+
+    function renderSystemBanner(data) {
+      if (!data) return;
+      if (data.publishingMode === 'git-backed') {
+        systemBanner.innerHTML = `
+          <div class="status-bar-pill status-pill-green">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Git-Backed CMS Active: Commits to ${data.github.owner}/${data.github.repo} (${data.github.branch}) trigger Vercel deployments.
+          </div>
+        `;
+      } else {
+        systemBanner.innerHTML = `
+          <div class="status-bar-pill status-pill-amber" style="cursor: pointer;" onclick="document.getElementById('statusModal').classList.add('open')">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+            Setup Required: GitHub Token &amp; Vercel environment variables need to be configured for online publishing. Click to view checklist.
+          </div>
+        `;
+      }
+    }
+
+    function renderChecklist(data) {
+      const container = document.getElementById('statusChecklistBody');
+      if (!container || !data.setupChecklist) return;
+
+      container.innerHTML = data.setupChecklist.map(item => `
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0.85rem; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); background: #FFFFFF;">
+          <div>
+            <strong>${item.label}</strong>
+            <div style="font-family: monospace; font-size: 0.75rem; color: var(--color-text-muted);">${item.key}</div>
+          </div>
+          <span class="status-bar-pill ${item.configured ? 'status-pill-green' : 'status-pill-amber'}">
+            ${item.configured ? '✓ Configured' : 'Missing'}
+          </span>
+        </div>
+      `).join('');
+    }
+
+    // Login Form Submit
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      loginError.style.display = 'none';
+
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      try {
+        const res = await fetch('/api/auth?action=login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'login', email, password })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          loginOverlay.style.display = 'none';
+          await checkAuth();
+          await loadPosts();
+        } else {
+          loginError.textContent = data.error || 'Authentication failed.';
+          loginError.style.display = 'block';
+        }
+      } catch (err) {
+        loginError.textContent = 'Network error connecting to auth server.';
+        loginError.style.display = 'block';
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', async () => {
+      await fetch('/api/auth?action=logout', { method: 'POST' });
+      state.authenticated = false;
+      window.location.reload();
+    });
+
+    // Load Posts
+    async function loadPosts() {
+      try {
+        const res = await fetch('/api/posts');
+        const data = await res.json();
+        state.posts = data.posts || [];
+        renderPostsTable(state.posts);
+      } catch (err) {
+        console.error('Failed to load posts:', err);
+      }
+    }
+
+    function renderPostsTable(posts) {
+      postsCountText.textContent = `${posts.length} post(s)`;
+      if (posts.length === 0) {
+        postsTableBody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 2rem;">No posts found. Click 'Create New Article' to create one.</td></tr>`;
+        return;
+      }
+
+      postsTableBody.innerHTML = posts.map(p => `
+        <tr>
+          <td>
+            <strong>${p.title}</strong>
+            <div style="font-family: monospace; font-size: 0.75rem; color: var(--color-text-muted);">/blog/${p.slug}/</div>
+          </td>
+          <td>${p.category || 'General'}</td>
+          <td>
+            <span class="admin-status-pill ${p.status === 'published' ? 'status-published' : 'status-draft'}">
+              ${p.status || 'draft'}
+            </span>
+          </td>
+          <td>${p.readingTime || '5 min'}</td>
+          <td style="font-size: var(--font-size-xs); color: var(--color-text-muted);">
+            ${p.updatedAt || p.publishedAt || 'Recently'}
+          </td>
+          <td style="text-align: right; white-space: nowrap;">
+            <button type="button" class="btn btn-outline-gold" style="padding: 0.25rem 0.55rem; font-size: var(--font-size-xs);" onclick="editPost('${p.slug}')">Edit</button>
+            <a href="/blog/${p.slug}/" target="_blank" class="btn btn-secondary" style="padding: 0.25rem 0.55rem; font-size: var(--font-size-xs); margin: 0 0.25rem;">Preview</a>
+            <button type="button" class="btn" style="padding: 0.25rem 0.55rem; font-size: var(--font-size-xs); color: #C62828;" onclick="deletePostConfirm('${p.slug}')">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Edit Post
+    window.editPost = function(slug) {
+      const post = state.posts.find(p => p.slug === slug);
+      if (!post) return;
+      state.currentPost = post;
+      openEditor(post);
+    };
+
+    // New Article
+    newArticleBtn.addEventListener('click', () => {
+      state.currentPost = null;
+      openEditor({
+        title: '',
+        slug: '',
+        excerpt: '',
+        category: 'Haircare & Styling',
+        author: 'Varsha Doke',
+        status: 'draft',
+        publishedAt: new Date().toISOString().split('T')[0],
+        featuredImage: { src: '', alt: '', caption: '' },
+        seo: { title: '', description: '', focusKeyword: '' },
+        body: ''
+      });
+    });
+
+    function openEditor(post) {
+      dashboardView.style.display = 'none';
+      editorView.style.display = 'block';
+      editorAlertBox.innerHTML = '';
+
+      document.getElementById('editorTitleDisplay').textContent = post.title ? `Edit: ${post.title}` : 'New Article';
+      document.getElementById('postTitle').value = post.title || '';
+      document.getElementById('postSlug').value = post.slug || '';
+      document.getElementById('postExcerpt').value = post.excerpt || '';
+      document.getElementById('postCategory').value = post.category || 'Haircare & Styling';
+      document.getElementById('postStatus').value = post.status || 'draft';
+      document.getElementById('postAuthor').value = post.author || 'Varsha Doke';
+      document.getElementById('postDate').value = post.publishedAt || new Date().toISOString().split('T')[0];
+      document.getElementById('postImageSrc').value = post.featuredImage?.src || '';
+      document.getElementById('postImageAlt').value = post.featuredImage?.alt || '';
+      document.getElementById('postImageCaption').value = post.featuredImage?.caption || '';
+      document.getElementById('postBody').value = post.body || '';
+      document.getElementById('seoTitle').value = post.seo?.title || post.title || '';
+      document.getElementById('seoDesc').value = post.seo?.description || post.excerpt || '';
+      document.getElementById('seoFocusKeyword').value = post.seo?.focusKeyword || '';
+
+      updateCharCounts();
+      updateReadingTime();
+      updateLivePreview();
+    }
+
+    backToDashBtn.addEventListener('click', () => {
+      editorView.style.display = 'none';
+      dashboardView.style.display = 'block';
+    });
+
+    // Real-time slug auto-generation from title
+    document.getElementById('postTitle').addEventListener('input', (e) => {
+      const title = e.target.value;
+      const slugInput = document.getElementById('postSlug');
+      if (!state.currentPost || !state.currentPost.slug) {
+        slugInput.value = title.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+      }
+      const seoTitleInput = document.getElementById('seoTitle');
+      if (!seoTitleInput.value || seoTitleInput.value === state.currentPost?.title) {
+        seoTitleInput.value = title ? `${title} | Aishwarya Beauty Parlour` : '';
+      }
+      updateCharCounts();
+    });
+
+    // Character counters & reading time
+    function updateCharCounts() {
+      const seoT = document.getElementById('seoTitle').value;
+      const seoD = document.getElementById('seoDesc').value;
+      document.getElementById('seoTitleLen').textContent = seoT.length;
+      document.getElementById('seoDescLen').textContent = seoD.length;
+    }
+
+    function updateReadingTime() {
+      const text = document.getElementById('postBody').value;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const minutes = Math.max(1, Math.ceil(words / 200));
+      document.getElementById('wordCountText').textContent = `${words} words`;
+      document.getElementById('readingTimeText').textContent = `~${minutes} min read`;
+    }
+
+    document.getElementById('postBody').addEventListener('input', () => {
+      updateReadingTime();
+      updateLivePreview();
+    });
+    document.getElementById('seoTitle').addEventListener('input', updateCharCounts);
+    document.getElementById('seoDesc').addEventListener('input', updateCharCounts);
+
+    // Live preview tabs
+    const tabWrite = document.getElementById('tabWrite');
+    const tabPreview = document.getElementById('tabPreview');
+    const writePane = document.getElementById('writePane');
+    const previewPane = document.getElementById('previewPane');
+
+    tabWrite.addEventListener('click', () => {
+      tabWrite.classList.add('active');
+      tabPreview.classList.remove('active');
+      writePane.style.display = 'block';
+      previewPane.style.display = 'none';
+    });
+    tabPreview.addEventListener('click', () => {
+      tabPreview.classList.add('active');
+      tabWrite.classList.remove('active');
+      writePane.style.display = 'none';
+      previewPane.style.display = 'block';
+      updateLivePreview();
+    });
+
+    function updateLivePreview() {
+      const body = document.getElementById('postBody').value;
+      const previewBox = document.getElementById('livePreviewContainer');
+      // Simple parser for preview
+      previewBox.innerHTML = body
+        .replace(/### (.*)/g, '<h3>$1</h3>')
+        .replace(/## (.*)/g, '<h2>$1</h2>')
+        .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<figure><img src="$2" alt="$1"><figcaption>$1</figcaption></figure>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .split(/\n\n+/).map(p => p.startsWith('<h') || p.startsWith('<figure') ? p : `<p>${p}</p>`).join('');
+    }
+
+    // Markdown Toolbar insertion
+    document.querySelectorAll('#mdToolbar .tb-btn').forEach(btn => {
+      if (btn.id === 'tbLinkBtn' || btn.id === 'tbImgBtn' || btn.id === 'tbTableBtn') return;
+      btn.addEventListener('click', () => {
+        const syntax = btn.getAttribute('data-syntax');
+        insertMarkdownSyntax(syntax);
+      });
+    });
+
+    function insertMarkdownSyntax(syntax) {
+      const textarea = document.getElementById('postBody');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selected = textarea.value.substring(start, end);
+
+      if (syntax.includes('|')) {
+        const [before, after] = syntax.split('|');
+        textarea.setRangeText(`${before}${selected}${after}`, start, end, 'select');
+      } else {
+        textarea.setRangeText(`\n${syntax}${selected}`, start, end, 'end');
+      }
+      textarea.focus();
+      updateReadingTime();
+    }
+
+    document.getElementById('tbLinkBtn').addEventListener('click', () => {
+      const url = prompt('Enter URL destination (e.g. /services.html):');
+      if (url) insertMarkdownSyntax(`[|](${url})`);
+    });
+
+    document.getElementById('tbImgBtn').addEventListener('click', () => {
+      const url = prompt('Enter Image URL (e.g. /images/blog/...):');
+      if (!url) return;
+      const alt = prompt('Enter MANDATORY Image Alt Text (describing the image):');
+      if (!alt) {
+        alert('Image Alt Text is strictly required for accessibility and SEO!');
+        return;
+      }
+      const textarea = document.getElementById('postBody');
+      const start = textarea.selectionStart;
+      textarea.setRangeText(`\n![${alt}](${url})\n`, start, start, 'end');
+      textarea.focus();
+    });
+
+    document.getElementById('tbTableBtn').addEventListener('click', () => {
+      const tableMd = `\n| Column 1 | Column 2 | Column 3 |\n| :--- | :--- | :--- |\n| Row 1 Item | Detail | Action |\n| Row 2 Item | Detail | Action |\n`;
+      insertMarkdownSyntax(tableMd);
+    });
+
+    // Image Upload Handler
+    document.getElementById('imageUploadInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const alt = prompt('Enter MANDATORY Alt Text for this uploaded image:');
+      if (!alt || alt.trim().length < 3) {
+        alert('Upload cancelled: Descriptive Alt Text is strictly required.');
+        return;
+      }
+
+      const slug = document.getElementById('postSlug').value || 'general';
+      const reader = new FileReader();
+      reader.onload = async () => {
+        try {
+          const res = await fetch('/api/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              slug,
+              filename: file.name,
+              fileData: reader.result,
+              mimeType: file.type,
+              altText: alt
+            })
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            document.getElementById('postImageSrc').value = data.url;
+            document.getElementById('postImageAlt').value = data.altText;
+            alert('Image uploaded and set as featured image!');
+          } else {
+            alert('Upload failed: ' + (data.error || 'Server rejected file'));
+          }
+        } catch (err) {
+          alert('Upload failed: ' + err.message);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Save Draft & Publish
+    saveDraftBtn.addEventListener('click', () => savePost('draft'));
+    publishBtn.addEventListener('click', () => savePost('published'));
+
+    async function savePost(status) {
+      editorAlertBox.innerHTML = '';
+      const title = document.getElementById('postTitle').value.trim();
+      const slug = document.getElementById('postSlug').value.trim();
+      const excerpt = document.getElementById('postExcerpt').value.trim();
+      const category = document.getElementById('postCategory').value;
+      const author = document.getElementById('postAuthor').value.trim();
+      const publishedAt = document.getElementById('postDate').value;
+      const imageSrc = document.getElementById('postImageSrc').value.trim();
+      const imageAlt = document.getElementById('postImageAlt').value.trim();
+      const imageCaption = document.getElementById('postImageCaption').value.trim();
+      const body = document.getElementById('postBody').value.trim();
+      const seoTitle = document.getElementById('seoTitle').value.trim();
+      const seoDesc = document.getElementById('seoDesc').value.trim();
+      const focusKeyword = document.getElementById('seoFocusKeyword').value.trim();
+
+      // Client-side validation
+      if (!title) return alert('Title is required');
+      if (!slug) return alert('Slug is required');
+      if (!imageAlt) return alert('Featured Image Alt Text is strictly required');
+      if (!body) return alert('Article body is required');
+
+      const payload = {
+        title,
+        slug,
+        excerpt,
+        category,
+        author,
+        status,
+        publishedAt,
+        featuredImage: { src: imageSrc, alt: imageAlt, caption: imageCaption },
+        seo: { title: seoTitle, description: seoDesc, focusKeyword },
+        body
+      };
+
+      try {
+        const btn = status === 'published' ? publishBtn : saveDraftBtn;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Committing...';
+        btn.disabled = true;
+
+        const res = await fetch('/api/posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+
+        if (res.ok && data.success) {
+          editorAlertBox.innerHTML = `
+            <div class="validation-alert alert-success">
+              ${data.message} ${data.isLiveSoon ? '<strong>The public update will be live in 1-2 minutes once Vercel builds the commit.</strong>' : ''}
+            </div>
+          `;
+          await loadPosts();
+        } else {
+          editorAlertBox.innerHTML = `
+            <div class="validation-alert alert-error">
+              ${data.error || 'Failed to save post'}
+            </div>
+          `;
+        }
+      } catch (err) {
+        editorAlertBox.innerHTML = `
+          <div class="validation-alert alert-error">
+            Network error: ${err.message}
+          </div>
+        `;
+      }
+    }
+
+    // Delete post
+    window.deletePostConfirm = async function(slug) {
+      if (!confirm(`Are you sure you want to permanently delete post "${slug}"?`)) return;
+      try {
+        const res = await fetch('/api/delete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slug })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          alert(data.message);
+          await loadPosts();
+        } else {
+          alert('Delete failed: ' + (data.error || 'Server error'));
+        }
+      } catch (err) {
+        alert('Delete failed: ' + err.message);
+      }
+    };
+
+    // Open status modal
+    openStatusModalBtn.addEventListener('click', () => {
+      statusModal.classList.add('open');
+    });
+    document.getElementById('loginSetupHelpBtn').addEventListener('click', () => {
+      statusModal.classList.add('open');
+    });
+
+    init();
+  </script>
+</body>
+</html>
