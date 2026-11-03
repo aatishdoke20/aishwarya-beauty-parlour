@@ -94,6 +94,9 @@ More text
   console.log('\n--- Suite 3: Seed Content Integrity ---');
   const haircutFile = path.join(ROOT_DIR, 'content', 'blog', 'ladies-haircut-hair-spa-manchar.md');
   const bridalFile = path.join(ROOT_DIR, 'content', 'blog', 'maharashtrian-bridal-makeup-manchar.md');
+  const facialFile = path.join(ROOT_DIR, 'content', 'blog', 'facial-in-manchar-how-to-choose.md');
+  const waxingFile = path.join(ROOT_DIR, 'content', 'blog', 'waxing-in-manchar-rica-chocolate-soft-wax.md');
+  const keratinFile = path.join(ROOT_DIR, 'content', 'blog', 'keratin-treatment-vs-hair-smoothening-manchar.md');
 
   runTest('Seed article 1 exists with required metadata', () => {
     assert.ok(fs.existsSync(haircutFile), 'haircut article file missing');
@@ -115,6 +118,36 @@ More text
     assert.strictEqual(frontmatter.status, 'published');
     assert.ok(frontmatter.featuredImage?.alt, 'Missing featured image alt');
     assert.ok(body.includes('Nauvari'), 'Body missing expected Nauvari copy');
+  });
+
+  runTest('Seed article 3 (Facial) exists with required metadata', () => {
+    assert.ok(fs.existsSync(facialFile), 'facial article file missing');
+    const content = fs.readFileSync(facialFile, 'utf8');
+    const { frontmatter, body } = parseMarkdownFile(content);
+    assert.strictEqual(frontmatter.slug, 'facial-in-manchar-how-to-choose');
+    assert.strictEqual(frontmatter.status, 'published');
+    assert.ok(frontmatter.featuredImage?.alt, 'Missing featured image alt');
+    assert.ok(body.includes('facial'), 'Body missing expected facial copy');
+  });
+
+  runTest('Seed article 4 (Waxing) exists with required metadata', () => {
+    assert.ok(fs.existsSync(waxingFile), 'waxing article file missing');
+    const content = fs.readFileSync(waxingFile, 'utf8');
+    const { frontmatter, body } = parseMarkdownFile(content);
+    assert.strictEqual(frontmatter.slug, 'waxing-in-manchar-rica-chocolate-soft-wax');
+    assert.strictEqual(frontmatter.status, 'published');
+    assert.ok(frontmatter.featuredImage?.alt, 'Missing featured image alt');
+    assert.ok(body.includes('Rica'), 'Body missing expected Rica wax copy');
+  });
+
+  runTest('Seed article 5 (Keratin) exists with required metadata', () => {
+    assert.ok(fs.existsSync(keratinFile), 'keratin article file missing');
+    const content = fs.readFileSync(keratinFile, 'utf8');
+    const { frontmatter, body } = parseMarkdownFile(content);
+    assert.strictEqual(frontmatter.slug, 'keratin-treatment-vs-hair-smoothening-manchar');
+    assert.strictEqual(frontmatter.status, 'published');
+    assert.ok(frontmatter.featuredImage?.alt, 'Missing featured image alt');
+    assert.ok(body.includes('keratin') || body.includes('Keratin'), 'Body missing expected keratin copy');
   });
 
   // TEST SUITE 4: DRAFT EXCLUSION TEST
@@ -218,10 +251,19 @@ Draft body content.
   runTest('Featured images exist on disk and have non-empty alt text', () => {
     const img1 = path.join(ROOT_DIR, 'images', 'blog', 'blog-ladies-haircut-hair-spa-manchar.jpg');
     const img2 = path.join(ROOT_DIR, 'images', 'blog', 'blog-maharashtrian-bridal-makeup-manchar.jpg');
+    const img3 = path.join(ROOT_DIR, 'images', 'facial-treatment.jpg');
+    const img4 = path.join(ROOT_DIR, 'images', 'service-rica-wax.jpg');
+    const img5 = path.join(ROOT_DIR, 'images', 'service-keratin.jpg');
     assert.ok(fs.existsSync(img1), 'Haircut blog image missing from disk');
     assert.ok(fs.existsSync(img2), 'Bridal blog image missing from disk');
+    assert.ok(fs.existsSync(img3), 'Facial blog image missing from disk');
+    assert.ok(fs.existsSync(img4), 'Waxing blog image missing from disk');
+    assert.ok(fs.existsSync(img5), 'Keratin blog image missing from disk');
     assert.ok(fs.statSync(img1).size > 10000, 'Image 1 is corrupt or empty');
     assert.ok(fs.statSync(img2).size > 10000, 'Image 2 is corrupt or empty');
+    assert.ok(fs.statSync(img3).size > 10000, 'Image 3 is corrupt or empty');
+    assert.ok(fs.statSync(img4).size > 10000, 'Image 4 is corrupt or empty');
+    assert.ok(fs.statSync(img5).size > 10000, 'Image 5 is corrupt or empty');
   });
 
   // TEST SUITE 8: SECURITY & ADMIN AUTHENTICATION

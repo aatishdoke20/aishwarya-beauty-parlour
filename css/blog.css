@@ -50,6 +50,16 @@
 .blog-breadcrumbs [aria-current="page"] {
   color: var(--color-text-espresso);
   font-weight: 600;
+  max-width: 480px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .blog-breadcrumbs [aria-current="page"] {
+    max-width: 200px;
+  }
 }
 
 /* --------------------------------------------------------------------------

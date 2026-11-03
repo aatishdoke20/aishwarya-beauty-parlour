@@ -21,6 +21,15 @@ const pages = [
   { file: 'mr/blog/manchar-maharashtrian-bridal-makeup/index.html', canonical: `${EXPECTED_DOMAIN}/mr/blog/manchar-maharashtrian-bridal-makeup/` },
   { file: 'hi/blog/manchar-me-ladies-haircut-hair-spa/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/manchar-me-ladies-haircut-hair-spa/` },
   { file: 'hi/blog/manchar-me-maharashtrian-bridal-makeup/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/manchar-me-maharashtrian-bridal-makeup/` },
+  { file: 'blog/facial-in-manchar-how-to-choose/index.html', canonical: `${EXPECTED_DOMAIN}/blog/facial-in-manchar-how-to-choose/` },
+  { file: 'mr/blog/facial-in-manchar-how-to-choose/index.html', canonical: `${EXPECTED_DOMAIN}/mr/blog/facial-in-manchar-how-to-choose/` },
+  { file: 'hi/blog/facial-in-manchar-how-to-choose/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/facial-in-manchar-how-to-choose/` },
+  { file: 'blog/waxing-in-manchar-rica-chocolate-soft-wax/index.html', canonical: `${EXPECTED_DOMAIN}/blog/waxing-in-manchar-rica-chocolate-soft-wax/` },
+  { file: 'mr/blog/waxing-in-manchar-rica-chocolate-soft-wax/index.html', canonical: `${EXPECTED_DOMAIN}/mr/blog/waxing-in-manchar-rica-chocolate-soft-wax/` },
+  { file: 'hi/blog/waxing-in-manchar-rica-chocolate-soft-wax/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/waxing-in-manchar-rica-chocolate-soft-wax/` },
+  { file: 'blog/keratin-treatment-vs-hair-smoothening-manchar/index.html', canonical: `${EXPECTED_DOMAIN}/blog/keratin-treatment-vs-hair-smoothening-manchar/` },
+  { file: 'mr/blog/keratin-treatment-vs-hair-smoothening-manchar/index.html', canonical: `${EXPECTED_DOMAIN}/mr/blog/keratin-treatment-vs-hair-smoothening-manchar/` },
+  { file: 'hi/blog/keratin-treatment-vs-hair-smoothening-manchar/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/keratin-treatment-vs-hair-smoothening-manchar/` },
 ];
 
 let errors = [];

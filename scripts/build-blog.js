@@ -2,18 +2,19 @@
  * Aishwarya Beauty Parlour - Multilingual Static Blog Site Generator
  * Compiles content/blog/*.md into production-ready, crawlable, pre-rendered static HTML
  * 
- * Supports Multilingual Architecture:
+ * Supports 5-Article Multilingual Architecture (15 article variants + 3 blog archives = 18 routes):
  * - English (en-IN): /blog/ and /blog/{slug}/
  * - Marathi (mr-IN): /mr/blog/ and /mr/blog/{slug}/
  * - Hindi (hi-IN): /hi/blog/ and /hi/blog/{slug}/
  * 
  * Complies with Google Search Central SEO, AEO, GEO standards:
  * - Direct answers in standfirst for answer engines
- * - BlogPosting, BreadcrumbList, FAQPage Schema.org structured data
- * - Strict self-referencing canonical URLs & reciprocal hreflang annotations
+ * - BlogPosting & BreadcrumbList Schema.org structured data (FAQPage schema omitted per 2026 guidelines)
+ * - Strict self-referencing canonical URLs & reciprocal hreflang annotations (en-IN, mr-IN, hi-IN, x-default)
  * - 1:1 language switcher preserving article context across EN | मराठी | हिन्दी
  * - Draft exclusion from public output and sitemap
  * - Table of contents with full Unicode Devanagari slug support
+ * - Dynamic category counts, data-driven empty states, and curated 1-2 related guides per post
  */
 
 const fs = require('fs');
@@ -44,16 +45,16 @@ const UI_STRINGS = {
     homeTitle: 'Home',
     blogTitle: 'Blog',
     journalEyebrow: 'THE AISHWARYA BEAUTY JOURNAL • LOCAL SALON EDITORIAL',
-    archiveHeroTitle: 'Hair Styling, Scalp Care & Bridal Artistry Guides in Manchar',
-    archiveHeroDesc: 'Your trusted local companion for precision haircut shaping, steam hair spa recovery, and traditional Maharashtrian bridal artistry. Curated by Varsha Doke with around 20 years of hands-on salon experience in Patilwada, Manchar (near S.T. Bus Stand). Proudly serving clients across Manchar, Ambegaon Taluka, Ghodegaon, Kalamb, Pimpalgaon, Narayangaon, and Landewadi.',
-    archiveMetaTitle: 'The Beauty Journal | Hair Styling & Bridal Artistry Guides in Manchar | Aishwarya Beauty Parlour',
-    archiveMetaDesc: 'Authentic ladies haircut styling, scalp care rituals, and Maharashtrian bridal makeup guides by Varsha Doke in Patilwada, Manchar. Serving Ambegaon Taluka.',
+    archiveHeroTitle: 'Hair Styling, Skincare & Bridal Artistry Guides in Manchar',
+    archiveHeroDesc: 'Your trusted local companion for precision haircut shaping, relaxing facial skincare, professional waxing, hair smoothening, and traditional Maharashtrian bridal artistry. Curated by Varsha Doke with around 20 years of hands-on salon experience in Patilwada, Manchar (near S.T. Bus Stand). Proudly serving clients across Manchar, Ambegaon Taluka, Ghodegaon, Kalamb, Pimpalgaon, Narayangaon, and Landewadi.',
+    archiveMetaTitle: 'The Beauty Journal | Hair, Skincare & Bridal Guides in Manchar | Aishwarya Beauty Parlour',
+    archiveMetaDesc: 'Authentic ladies haircut styling, facial skincare, waxing choices, keratin smoothening, and Maharashtrian bridal makeup guides by Varsha Doke in Patilwada, Manchar.',
     geoBanner: '📍 <strong>Salon Studio:</strong> Shop No. B-5, Shet Ambalal Trust Complex, Patilwada, Manchar • Call: <a href="tel:+919561985045" style="color: inherit; text-decoration: underline;">+91 95619 85045</a> • Serving Ambegaon Taluka, Ghodegaon, Kalamb, Pimpalgaon & Landewadi',
-    aeoTitle: 'Manchar Beauty & Haircare At A Glance (AEO Direct Answers)',
+    aeoTitle: 'Manchar Salon & Beauty Advice At A Glance (AEO Direct Answers)',
     aeoItems: [
-      { title: 'Haircuts in Manchar', text: 'Butterfly and layered cuts provide natural volume and easy air-dry styling without removing too much length, holding shape through local weather.' },
-      { title: 'Water Hardness & Frizz', text: 'Tap water mineral levels in rural Pune talukas cause cuticle dryness. Bi-weekly steam hair spas replenish protein bonds and softness.' },
-      { title: 'Bridal Booking Timelines', text: 'Enquire 3 to 6 weeks early for wedding muhurats to reserve Nauvari saree draping, sacred mundavalya setting, and sweat-proof HD makeup.' }
+      { title: 'Haircuts in Manchar', text: 'Butterfly, layered and step cuts provide natural volume and easy air-dry styling without removing too much length, holding shape through local weather.' },
+      { title: 'Hair Spa & Conditioning', text: 'Salon hair spa therapy and deep conditioning nourish the hair cuticle, smooth roughness and manage frizz based on your hair texture and routine.' },
+      { title: 'Bridal Booking Timelines', text: 'Enquire 3 to 6 weeks early for wedding dates to reserve Nauvari saree draping, sacred mundavalya setting, and camera-ready HD makeup.' }
     ],
     allGuides: 'All Guides',
     searchPlaceholder: 'Search guides by keyword...',
@@ -66,7 +67,7 @@ const UI_STRINGS = {
     exploreDepartments: 'Explore Our Main Salon Departments in Manchar',
     exploreDeptDesc: 'Looking for specific service pricing, timing details, or studio portfolios? Navigate directly:',
     bottomCtaTitle: 'Looking for Personal Advice or Booking?',
-    bottomCtaDesc: 'Chat directly with Varsha Doke for customized haircut suggestions, bridal consultation dates, and salon hours.',
+    bottomCtaDesc: 'Chat directly with Varsha Doke for customized haircut suggestions, skincare consultations, bridal booking dates, and salon hours.',
     bottomCtaBtn: 'Chat on WhatsApp',
     directAnswerBadge: 'Direct Answer for Readers',
     authorRole: 'Salon Owner & Stylist • ~20 Yrs Experience in Manchar',
@@ -81,7 +82,7 @@ const UI_STRINGS = {
     napStudioHours: 'Daily Hours: 10:30 AM – 8:00 PM • Direct Phone:',
     napStudioDirections: 'View Route Map & Studio Directions →',
     articleCtaTitle: 'Book or Ask a Question on WhatsApp',
-    articleCtaDesc: 'Connect directly with Varsha Doke at Aishwarya Beauty Parlour to discuss haircuts, hair spa, or bridal booking dates.',
+    articleCtaDesc: 'Connect directly with Varsha Doke at Aishwarya Beauty Parlour to discuss haircuts, facials, waxing, hair treatments, or bridal booking dates.',
     articleCtaBtn: 'Book or Ask on WhatsApp',
     backToJournal: '← Back to all guides & articles in our journal',
     tableOfContents: 'Table of Contents'
@@ -92,15 +93,15 @@ const UI_STRINGS = {
     homeTitle: 'मुख्यपृष्ठ',
     blogTitle: 'ब्युटी जर्नल',
     journalEyebrow: 'ऐश्वर्या ब्युटी जर्नल • स्थानिक पार्लर मार्गदर्शन',
-    archiveHeroTitle: 'मंचरमधील महिलांचे हेअरकट, हेअर स्पा आणि नवरी मेकअप मार्गदर्शक',
-    archiveHeroDesc: 'मंचर, आंबेगाव तालुका, घोडेगाव, कळंब, पिंपळगाव आणि लांडेवाडी परिसरातील महिलांसाठी केस कापणे, हेअर स्पा थेरपी आणि पारंपरिक नवरी मेकअप विषयी अचूक आणि उपयुक्त माहिती. वर्षा डोके (सुमारे २० वर्षांचा अनुभव), पाटीलवाडा, मंचर.',
-    archiveMetaTitle: 'ब्युटी जर्नल | हेअरस्टाईल, हेअर स्पा व महाराष्ट्रीयन नवरी मेकअप मार्गदर्शक मंचर | ऐश्वर्या ब्युटी पार्लर',
-    archiveMetaDesc: 'मंचर व आंबेगाव तालुक्यातील महिलांसाठी हेअरकट, हेअर स्पा आणि पारंपरिक महाराष्ट्रीयन ब्रायडल मेकअपची माहिती. वर्षा डोके, पाटीलवाडा, मंचर.',
+    archiveHeroTitle: 'मंचरमधील महिलांचे हेअरकट, फेशियल, वॅक्सिंग आणि नवरी मेकअप मार्गदर्शक',
+    archiveHeroDesc: 'मंचर, आंबेगाव तालुका, घोडेगाव, कळंब, पिंपळगाव आणि लांडेवाडी परिसरातील महिलांसाठी हेअरकट, रिलॅक्सिंग फेशियल, वॅक्सिंग, हेअर स्मूथनिंग आणि पारंपरिक नवरी मेकअप विषयी सविस्तर माहिती. वर्षा डोके (सुमारे २० वर्षांचा अनुभव), पाटीलवाडा, मंचर.',
+    archiveMetaTitle: 'ब्युटी जर्नल | हेअरस्टाईल, फेशियल, वॅक्सिंग व नवरी मेकअप मार्गदर्शक मंचर | ऐश्वर्या ब्युटी पार्लर',
+    archiveMetaDesc: 'मंचर व आंबेगाव तालुक्यातील महिलांसाठी हेअरकट, फेशियल, वॅक्सिंग पर्याय, केराटिन ट्रीटमेंट आणि पारंपरिक नवरी मेकअपची माहिती. वर्षा डोके, पाटीलवाडा, मंचर.',
     geoBanner: '📍 <strong>स्टुडिओ:</strong> शॉप नं. B-5, शेठ अंबालाल ट्रस्ट कॉम्प्लेक्स, एस.टी. स्टँड जवळ, पाटीलवाडा, मंचर • फोन: <a href="tel:+919561985045" style="color: inherit; text-decoration: underline;">+91 95619 85045</a> • सेवा क्षेत्र: मंचर व आंबेगाव तालुका',
     aeoTitle: 'मंचर पार्लर व हेअरकेअर सारांश (AEO Direct Answers)',
     aeoItems: [
       { title: 'मंचरमधील हेअरकट', text: 'बटरफ्लाय आणि लेअर्ड कटमुळे केसांची लांबी कमी न करता उत्तम व्हॉल्यूम मिळतो आणि रोजच्या धावपळीत केस सहज सांभाळता येतात.' },
-      { title: 'पाण्यामुळे कोरडे पडणारे केस', text: 'स्थानिक पाण्यातील क्षार आणि हवेमुळे केस कोरडे व फ्रिजी होतात. नियमित हेअर स्पा थेरपीने केसांना योग्य पोषण आणि मऊपणा मिळतो.' },
+      { title: 'हेअर स्पा आणि कंडिशनिंग', text: 'सलूनमधील हेअर स्पा थेरपी आणि डीप कंडिशनिंगमुळे केसांना योग्य पोषण मिळते, कोरडेपणा कमी होतो आणि केस मऊ व चमकदार राहतात.' },
       { title: 'ब्रायडल बुकिंगच्या वेळा', text: 'लग्नाच्या तारखेच्या किमान ३ ते ६ आठवडे आधी संपर्क साधल्यास नऊवारी साडी ड्रेपिंग, मुंडावळ्या आणि घामाचा परिणाम न होणारा HD मेकअप वेळेत नियोजित करता येतो.' }
     ],
     allGuides: 'सर्व लेख',
@@ -114,7 +115,7 @@ const UI_STRINGS = {
     exploreDepartments: 'मंचरमधील आमच्या मुख्य पार्लर सेवा जाणून घ्या',
     exploreDeptDesc: 'विशिष्ट सेवांचे दर, लागणारा वेळ किंवा स्टुडिओ कामाचे नमुने पाहण्यासाठी खालील पानांवर जा:',
     bottomCtaTitle: 'वैयक्तिक सल्ला किंवा बुकिंग हवे आहे का?',
-    bottomCtaDesc: 'तुमच्या चेहऱ्याला साजेसा हेअरकट, ब्रायडल बुकिंगच्या उपलब्ध तारखा आणि सल्ल्यासाठी वर्षा डोके यांच्याशी थेट बोला.',
+    bottomCtaDesc: 'तुमच्या चेहऱ्याला साजेसा हेअरकट, त्वचेनुसार फेशियल, ब्रायडल बुकिंगच्या उपलब्ध तारखा आणि सल्ल्यासाठी वर्षा डोके यांच्याशी थेट बोला.',
     bottomCtaBtn: 'व्हॉट्सॲपवर संपर्क साधा',
     directAnswerBadge: 'वाचकांसाठी थेट उत्तर (Direct Answer)',
     authorRole: 'पार्लर संचालिका व मुख्य स्टायलिस्ट • मंचरमध्ये ~२० वर्षांचा अनुभव',
@@ -129,7 +130,7 @@ const UI_STRINGS = {
     napStudioHours: 'वेळ: दररोज स. १०:३० ते रा. ८:०० • फोन:',
     napStudioDirections: 'गुगल मॅप व स्टुडिओचा पत्ता पहा →',
     articleCtaTitle: 'व्हॉट्सॲपवर संपर्क साधा किंवा वेळ बुक करा',
-    articleCtaDesc: 'हेअरकट, हेअर स्पा किंवा ब्रायडल बुकिंगबाबत अधिक माहितीसाठी ऐश्वर्या ब्युटी पार्लरच्या वर्षा डोके यांच्याशी थेट बोला.',
+    articleCtaDesc: 'हेअरकट, फेशियल, वॅक्सिंग, हेअर ट्रीटमेंट्स किंवा ब्रायडल बुकिंगबाबत अधिक माहितीसाठी वर्षा डोके यांच्याशी थेट बोला.',
     articleCtaBtn: 'व्हॉट्सॲपवर संपर्क साधा',
     backToJournal: '← ब्लॉगमधील सर्व लेख पहा',
     tableOfContents: 'अनुक्रमणिका (Table of Contents)'
@@ -140,15 +141,15 @@ const UI_STRINGS = {
     homeTitle: 'होम',
     blogTitle: 'ब्यूटी जर्नल',
     journalEyebrow: 'ऐश्वर्या ब्यूटी जर्नल • लोकल ब्यूटी पार्लर गाइड',
-    archiveHeroTitle: 'मंचर में लेडीज हेयरकट, हेयर स्पा और ब्राइडल मेकअप गाइड',
-    archiveHeroDesc: 'मंचर, आंबेगांव तालुका, घोडेगांव, कलंब, पिंपलगांव और लांडेवाडी की महिलाओं के लिए हेयरकट शेपिंग, हेयर स्पा थेरेपी और पारंपरिक महाराष्ट्रीयन ब्राइडल मेकअप की सही जानकारी। वर्षा डोके (~20 वर्षों का अनुभव), पाटिलवाडा, मंचर।',
-    archiveMetaTitle: 'ब्यूटी जर्नल | हेयरकट, हेयर स्पा और महाराष्ट्रीयन ब्राइडल मेकअप गाइड मंचर | ऐश्वर्या ब्यूटी पार्लर',
-    archiveMetaDesc: 'मंचर और आंबेगांव तालुका की महिलाओं के लिए लेडीज हेयरकट, हेयर स्पा और पारंपरिक महाराष्ट्रीयन ब्राइडल मेकअप गाइड। वर्षा डोके, पाटिलवाडा, मंचर।',
+    archiveHeroTitle: 'मंचर में लेडीज हेयरकट, फेशियल, वैक्सिंग और ब्राइडल मेकअप गाइड',
+    archiveHeroDesc: 'मंचर, आंबेगांव तालुका, घोडेगांव, कलंब, पिंपलगांव और लांडेवाडी की महिलाओं के लिए हेयरकट शेपिंग, फेशियल स्किनकेयर, वैक्सिंग, हेयर स्मूदनिंग और पारंपरिक महाराष्ट्रीयन ब्राइडल मेकअप की सही जानकारी। वर्षा डोके (~20 वर्षों का अनुभव), पाटिलवाडा, मंचर।',
+    archiveMetaTitle: 'ब्यूटी जर्नल | हेयरकट, फेशियल, वैक्सिंग और ब्राइडल मेकअप गाइड मंचर | ऐश्वर्या ब्यूटी पार्लर',
+    archiveMetaDesc: 'मंचर और आंबेगांव तालुका की महिलाओं के लिए लेडीज हेयरकट, फेशियल केयर, वैक्सिंग विकल्प, केराटिन और पारंपरिक महाराष्ट्रीयन ब्राइडल मेकअप गाइड। वर्षा डोके, पाटिलवाडा, मंचर।',
     geoBanner: '📍 <strong>स्टूडियो:</strong> शॉप नं. B-5, शेठ अंबालाल ट्रस्ट कॉम्प्लेक्स, एस.टी. स्टैंड के पास, पाटिलवाडा, मंचर • फोन: <a href="tel:+919561985045" style="color: inherit; text-decoration: underline;">+91 95619 85045</a> • सेवा क्षेत्र: मंचर व आंबेगांव तालुका',
     aeoTitle: 'मंचर ब्यूटी व हेयरकेयर सारांश (AEO Direct Answers)',
     aeoItems: [
       { title: 'मंचर में लेडीज हेयरकट', text: 'बटरफ्लाई और लेयर्ड कट बालों की लंबाई कम किए बिना बेहतरीन वॉल्यूम और स्टाइलिंग में आसानी प्रदान करते हैं।' },
-      { title: 'हार्ड वॉटर और ड्राई बाल', text: 'ग्रामीण आंबेगांव में पानी के टीडीएस और मौसम से बाल रूखे हो जाते हैं। नियमित हेयर स्पा से बालों को डीप कंडीशनिंग और पोषण मिलता है।' },
+      { title: 'हेयर स्पा और कंडीशनिंग', text: 'सैलून हेयर स्पा थेरेपी और डीप कंडीशनिंग से बालों को पोषण मिलता है, रूखापन दूर होता है और बाल मुलायम व चमकदार बनते हैं।' },
       { title: 'ब्राइडल बुकिंग समय सीमा', text: 'शुभ विवाह मुहूर्त के लिए 3 से 6 सप्ताह पहले संपर्क करें ताकि नौवारी साड़ी ड्रेपिंग, मुंडावल्या और लॉन्ग-लास्टिंग एचडी मेकअप पहले से सुनिश्चित हो सके।' }
     ],
     allGuides: 'सभी गाइड्स',
@@ -162,7 +163,7 @@ const UI_STRINGS = {
     exploreDepartments: 'मंचर में हमारी मुख्य पार्लर सेवाएं',
     exploreDeptDesc: 'विशिष्ट सेवाओं के मूल्य, समय या कार्य के नमूने देखने के लिए सीधे इन पृष्ठों पर जाएं:',
     bottomCtaTitle: 'व्यक्तिगत परामर्श या बुकिंग के लिए संपर्क करें',
-    bottomCtaDesc: 'हेयरकट सुझाव, ब्राइडल परामर्श तिथियां और पार्लर समय के लिए वर्षा डोके से सीधे व्हाट्सएप पर बात करें।',
+    bottomCtaDesc: 'हेयरकट सुझाव, स्किनकेयर, ब्राइडल परामर्श तिथियां और पार्लर समय के लिए वर्षा डोके से सीधे व्हाट्सएप पर बात करें।',
     bottomCtaBtn: 'व्हाट्सएप पर संपर्क करें',
     directAnswerBadge: 'पाठकों के लिए सीधा उत्तर (Direct Answer)',
     authorRole: 'पार्लर संचालिका व मुख्य स्टाइलिस्ट • मंचर में ~20 वर्षों का अनुभव',
@@ -177,7 +178,7 @@ const UI_STRINGS = {
     napStudioHours: 'समय: प्रतिदिन सुबह 10:30 से रात 8:00 • फोन:',
     napStudioDirections: 'गूगल मैप और पार्लर का रास्ता देखें →',
     articleCtaTitle: 'व्हाट्सएप पर अपॉइंटमेंट बुक करें या सलाह लें',
-    articleCtaDesc: 'हेयरकट, हेयर स्पा या ब्राइडल बुकिंग की तारीखों के लिए ऐश्वर्या ब्यूटी पार्लर की वर्षा डोके से सीधे व्हाट्सएप पर जुड़ें।',
+    articleCtaDesc: 'हेयरकट, फेशियल, वैक्सिंग, हेयर ट्रीटमेंट्स या ब्राइडल बुकिंग की तारीखों के लिए ऐश्वर्या ब्यूटी पार्लर की वर्षा डोके से सीधे व्हाट्सएप पर जुड़ें।',
     articleCtaBtn: 'व्हाट्सएप पर संपर्क करें',
     backToJournal: '← सभी गाइड्स और लेख देखें',
     tableOfContents: 'विषय सूची (Table of Contents)'
@@ -657,6 +658,8 @@ function getFooterHtml() {
           <ul class="footer-links-list">
             <li><a href="/services.html#haircut" class="footer-link">Ladies Haircut &amp; Styling</a></li>
             <li><a href="/services.html#facial" class="footer-link">Facials &amp; Skincare</a></li>
+            <li><a href="/services.html#waxing" class="footer-link">Waxing Studio</a></li>
+            <li><a href="/services.html#hair-treatments" class="footer-link">Keratin &amp; Smoothening</a></li>
             <li><a href="/bridal-makeup.html" class="footer-link">Bridal Makeup &amp; Draping</a></li>
             <li><a href="/services.html" class="footer-link">Complete Services Menu</a></li>
           </ul>
@@ -773,9 +776,9 @@ function buildArticlePage(post, allPosts) {
   const ogImgUrl = (post.seo && post.seo.ogImage) || `${BASE_URL}${post.featuredImage.src}`;
 
   // Peer URLs for exact article-to-article switching and hreflangs
-  const enSlug = (post.peerSlugs && post.peerSlugs.en) || (lang === 'en' ? post.slug : 'ladies-haircut-hair-spa-manchar');
-  const mrSlug = (post.peerSlugs && post.peerSlugs.mr) || (lang === 'mr' ? post.slug : 'manchar-ladies-haircut-hair-spa');
-  const hiSlug = (post.peerSlugs && post.peerSlugs.hi) || (lang === 'hi' ? post.slug : 'manchar-me-ladies-haircut-hair-spa');
+  const enSlug = (post.peerSlugs && post.peerSlugs.en) || post.slug;
+  const mrSlug = (post.peerSlugs && post.peerSlugs.mr) || post.slug;
+  const hiSlug = (post.peerSlugs && post.peerSlugs.hi) || post.slug;
 
   const enUrl = `${BASE_URL}/blog/${enSlug}/`;
   const mrUrl = `${BASE_URL}/mr/blog/${mrSlug}/`;
@@ -803,7 +806,7 @@ function buildArticlePage(post, allPosts) {
     </nav>
   ` : '';
 
-  // FAQs HTML
+  // FAQs HTML (Semantic HTML kept visible for users and AEO; FAQPage schema omitted per 2026 guidelines)
   const faqsHtml = (post.faqs && post.faqs.length > 0) ? `
     <section class="article-faq-section" aria-labelledby="faq-title">
       <h2 id="faq-title" class="article-faq-title">${strings.faqTitle}</h2>
@@ -840,8 +843,20 @@ function buildArticlePage(post, allPosts) {
     </section>
   ` : '';
 
-  // Related Posts HTML (Filter only same-language published posts)
-  const otherPosts = allPosts.filter(p => p.slug !== post.slug && p.status === 'published' && (p.lang || 'en') === lang);
+  // Related Posts HTML (Show 1-2 curated, relevant related guides in the same language)
+  const relatedPostSlugs = post.relatedPosts || [];
+  let otherPosts = [];
+  if (relatedPostSlugs.length > 0) {
+    otherPosts = allPosts.filter(p => {
+      if ((p.lang || 'en') !== lang || p.slug === post.slug || p.status !== 'published') return false;
+      const pEnSlug = (p.peerSlugs && p.peerSlugs.en) || p.slug;
+      return relatedPostSlugs.includes(p.slug) || relatedPostSlugs.includes(pEnSlug);
+    }).slice(0, 2);
+  }
+  if (otherPosts.length === 0) {
+    otherPosts = allPosts.filter(p => p.slug !== post.slug && p.status === 'published' && (p.lang || 'en') === lang).slice(0, 2);
+  }
+
   const relatedPostsHtml = otherPosts.length > 0 ? `
     <section class="section-spacing" style="padding-top: 2rem;" aria-labelledby="related-posts-title">
       <h2 id="related-posts-title" class="blog-hero-title" style="font-size: 1.85rem; margin-bottom: 1.5rem;">${strings.relatedGuidesTitle}</h2>
@@ -906,7 +921,7 @@ function buildArticlePage(post, allPosts) {
     }
   };
 
-  // JSON-LD Structured Data: BreadcrumbList
+  // JSON-LD Structured Data: BreadcrumbList (Home > Blog > Current Article)
   const jsonLdBreadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -931,20 +946,6 @@ function buildArticlePage(post, allPosts) {
       }
     ]
   };
-
-  // JSON-LD Structured Data: FAQPage
-  const jsonLdFaq = (post.faqs && post.faqs.length > 0) ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": post.faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  } : null;
 
   return `<!DOCTYPE html>
 <html lang="${strings.htmlLang}">
@@ -985,7 +986,7 @@ function buildArticlePage(post, allPosts) {
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/style.css?v=3.0">
-  <link rel="stylesheet" href="/css/blog.css?v=1.3">
+  <link rel="stylesheet" href="/css/blog.css?v=1.4">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23FAF7F2%22 stroke=%22%23B5893B%22 stroke-width=%224%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2246%22 font-weight=%22bold%22 fill=%22%238C6521%22 text-anchor=%22middle%22>A</text></svg>">
@@ -999,11 +1000,6 @@ ${JSON.stringify(jsonLdBlogPosting, null, 2)}
   <script type="application/ld+json">
 ${JSON.stringify(jsonLdBreadcrumb, null, 2)}
   </script>
-
-  ${jsonLdFaq ? `<!-- JSON-LD Structured Data: FAQPage (AEO & AI Overviews) -->
-  <script type="application/ld+json">
-${JSON.stringify(jsonLdFaq, null, 2)}
-  </script>` : ''}
 </head>
 <body>
 
@@ -1023,7 +1019,7 @@ ${getHeaderHtml('blog', lang)}
         </nav>
         <div class="lang-switcher" role="navigation" aria-label="Language selection">
           <span class="lang-label">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
             <span>Language:</span>
           </span>
           <a href="/blog/${enSlug}/" class="lang-btn ${lang === 'en' ? 'active' : ''}" ${lang === 'en' ? 'aria-current="true"' : ''} hreflang="en-IN" lang="en">EN</a>
@@ -1193,6 +1189,7 @@ function buildBlogIndexPage(allPublishedPosts, lang = 'en') {
   // Dynamic Categories from this language's posts
   const categories = Array.from(new Set(publishedPosts.map(p => p.category).filter(Boolean)));
 
+  // JSON-LD BreadcrumbList for Blog Index (Home > Blog)
   const jsonLdBreadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -1278,7 +1275,7 @@ function buildBlogIndexPage(allPublishedPosts, lang = 'en') {
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/css/style.css?v=3.0">
-  <link rel="stylesheet" href="/css/blog.css?v=1.3">
+  <link rel="stylesheet" href="/css/blog.css?v=1.4">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23FAF7F2%22 stroke=%22%23B5893B%22 stroke-width=%224%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2246%22 font-weight=%22bold%22 fill=%22%238C6521%22 text-anchor=%22middle%22>A</text></svg>">
@@ -1300,7 +1297,7 @@ ${getHeaderHtml('blog', lang)}
   <main id="main-content">
     <div class="blog-index-hero">
       <div class="container">
-        <!-- Top Bar: Visible Breadcrumbs & Language Switcher -->
+        <!-- Top Bar: Visible Breadcrumbs (Home > Blog) & Language Switcher -->
         <div class="blog-top-bar" style="padding-top: 0;">
           <nav class="blog-breadcrumbs" aria-label="Breadcrumbs">
             <ol>
@@ -1336,7 +1333,7 @@ ${getHeaderHtml('blog', lang)}
 
     <div class="container">
       
-      <!-- AEO DIRECT ANSWERS & SALON SUMMARY -->
+      <!-- AEO DIRECT ANSWERS & SALON SUMMARY (Factual, service-led, no unsupported water claims) -->
       <section class="blog-aeo-summary-card" aria-label="Direct salon advice for Manchar clients">
         <div class="direct-answer-badge">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
@@ -1410,7 +1407,7 @@ ${getHeaderHtml('blog', lang)}
       </section>
       ` : ''}
 
-      <!-- Articles Grid -->
+      <!-- Articles Grid (Shows all 5 published articles for active language) -->
       <section aria-labelledby="all-guides-heading">
         <h2 id="all-guides-heading" class="blog-hero-title" style="font-size: 1.85rem; margin-bottom: 2rem;">${strings.latestGuides}</h2>
         
@@ -1435,8 +1432,8 @@ ${getHeaderHtml('blog', lang)}
           `).join('')}
         </div>
 
-        <!-- No Results Fallback State -->
-        <div id="noPostsFound" class="blog-no-results">
+        <!-- No Results Fallback State (Renders only when search/filter matches === 0) -->
+        <div id="noPostsFound" class="blog-no-results" style="display: none;">
           <h3>${strings.noGuidesFound}</h3>
           <p>${strings.noGuidesDesc}</p>
           <button type="button" class="btn btn-secondary" id="resetBlogFilterBtn">${strings.resetFilter}</button>
@@ -1456,20 +1453,20 @@ ${getHeaderHtml('blog', lang)}
             <span>Ladies Haircuts &amp; Hairdressing</span>
             <span style="color: var(--color-accent-gold-dark);">&rarr;</span>
           </a>
+          <a href="/services.html#facial" class="article-service-pill">
+            <span>Facials &amp; Skincare Care</span>
+            <span style="color: var(--color-accent-gold-dark);">&rarr;</span>
+          </a>
+          <a href="/services.html#waxing" class="article-service-pill">
+            <span>Waxing Studio (Rica, Chocolate, Soft)</span>
+            <span style="color: var(--color-accent-gold-dark);">&rarr;</span>
+          </a>
           <a href="/services.html#hair-treatments" class="article-service-pill">
-            <span>Hair Spa Therapy &amp; Keratin Care</span>
+            <span>Keratin &amp; Hair Smoothening</span>
             <span style="color: var(--color-accent-gold-dark);">&rarr;</span>
           </a>
           <a href="/bridal-makeup.html" class="article-service-pill">
             <span>Bridal Studio &amp; Nauvari Draping</span>
-            <span style="color: var(--color-accent-gold-dark);">&rarr;</span>
-          </a>
-          <a href="/about.html" class="article-service-pill">
-            <span>About Varsha Doke (20+ Yrs Experience)</span>
-            <span style="color: var(--color-accent-gold-dark);">&rarr;</span>
-          </a>
-          <a href="/location.html" class="article-service-pill">
-            <span>Location Map, S.T. Bus Stand Landmark</span>
             <span style="color: var(--color-accent-gold-dark);">&rarr;</span>
           </a>
           <a href="/contact.html" class="article-service-pill">
@@ -1495,7 +1492,7 @@ ${getHeaderHtml('blog', lang)}
 ${getFooterHtml()}
 
   <script>
-    // Client-side Category Filter & Search
+    // Client-side Category Filter & Live Search
     const catButtons = document.querySelectorAll('.blog-category-btn');
     const cards = document.querySelectorAll('.blog-card');
     const featured = document.querySelector('.blog-featured-card');
@@ -1651,6 +1648,14 @@ function build() {
     // Also save as /{lang}/blog/{slug}.html for static server compatibility
     const compatPath = path.join(baseOutDir, `${post.slug}.html`);
     fs.writeFileSync(compatPath, html, 'utf8');
+
+    // If English peer slug differs from localized slug, generate alias in localized directory
+    if (post.peerSlugs && post.peerSlugs.en && post.peerSlugs.en !== post.slug) {
+      const aliasDir = path.join(baseOutDir, post.peerSlugs.en);
+      if (!fs.existsSync(aliasDir)) fs.mkdirSync(aliasDir, { recursive: true });
+      fs.writeFileSync(path.join(aliasDir, 'index.html'), html, 'utf8');
+      fs.writeFileSync(path.join(baseOutDir, `${post.peerSlugs.en}.html`), html, 'utf8');
+    }
 
     const displayRoute = lang === 'en' ? `/blog/${post.slug}/` : `/${lang}/blog/${post.slug}/`;
     console.log(`  ✅ Generated: ${displayRoute}`);

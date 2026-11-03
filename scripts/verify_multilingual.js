@@ -55,6 +55,60 @@ const pages = [
     canonical: `${EXPECTED_DOMAIN}/hi/blog/manchar-me-maharashtrian-bridal-makeup/`,
     lang: 'hi-IN',
     articleKey: 'bridal'
+  },
+  {
+    file: 'blog/facial-in-manchar-how-to-choose/index.html',
+    canonical: `${EXPECTED_DOMAIN}/blog/facial-in-manchar-how-to-choose/`,
+    lang: 'en-IN',
+    articleKey: 'facial'
+  },
+  {
+    file: 'mr/blog/facial-in-manchar-how-to-choose/index.html',
+    canonical: `${EXPECTED_DOMAIN}/mr/blog/facial-in-manchar-how-to-choose/`,
+    lang: 'mr-IN',
+    articleKey: 'facial'
+  },
+  {
+    file: 'hi/blog/facial-in-manchar-how-to-choose/index.html',
+    canonical: `${EXPECTED_DOMAIN}/hi/blog/facial-in-manchar-how-to-choose/`,
+    lang: 'hi-IN',
+    articleKey: 'facial'
+  },
+  {
+    file: 'blog/waxing-in-manchar-rica-chocolate-soft-wax/index.html',
+    canonical: `${EXPECTED_DOMAIN}/blog/waxing-in-manchar-rica-chocolate-soft-wax/`,
+    lang: 'en-IN',
+    articleKey: 'waxing'
+  },
+  {
+    file: 'mr/blog/waxing-in-manchar-rica-chocolate-soft-wax/index.html',
+    canonical: `${EXPECTED_DOMAIN}/mr/blog/waxing-in-manchar-rica-chocolate-soft-wax/`,
+    lang: 'mr-IN',
+    articleKey: 'waxing'
+  },
+  {
+    file: 'hi/blog/waxing-in-manchar-rica-chocolate-soft-wax/index.html',
+    canonical: `${EXPECTED_DOMAIN}/hi/blog/waxing-in-manchar-rica-chocolate-soft-wax/`,
+    lang: 'hi-IN',
+    articleKey: 'waxing'
+  },
+  {
+    file: 'blog/keratin-treatment-vs-hair-smoothening-manchar/index.html',
+    canonical: `${EXPECTED_DOMAIN}/blog/keratin-treatment-vs-hair-smoothening-manchar/`,
+    lang: 'en-IN',
+    articleKey: 'keratin'
+  },
+  {
+    file: 'mr/blog/keratin-treatment-vs-hair-smoothening-manchar/index.html',
+    canonical: `${EXPECTED_DOMAIN}/mr/blog/keratin-treatment-vs-hair-smoothening-manchar/`,
+    lang: 'mr-IN',
+    articleKey: 'keratin'
+  },
+  {
+    file: 'hi/blog/keratin-treatment-vs-hair-smoothening-manchar/index.html',
+    canonical: `${EXPECTED_DOMAIN}/hi/blog/keratin-treatment-vs-hair-smoothening-manchar/`,
+    lang: 'hi-IN',
+    articleKey: 'keratin'
   }
 ];
 
@@ -70,7 +124,7 @@ if (!robotsContent.includes(`Sitemap: ${EXPECTED_DOMAIN}/sitemap.xml`)) {
 }
 
 // 2. Verify sitemap.xml
-console.log('\n--- Checking sitemap.xml for all 16 canonical URLs ---');
+console.log('\n--- Checking sitemap.xml for all 25 canonical URLs ---');
 const sitemapContent = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 pages.forEach(p => {
   if (!sitemapContent.includes(`<loc>${p.canonical}</loc>`)) {
@@ -160,10 +214,11 @@ pages.forEach(p => {
 
 console.log('\n--- Final Verification Summary ---');
 if (errors.length === 0) {
-  console.log('🎉 ALL 16 CANONICAL ROUTES AND MULTILINGUAL SEO CHECKS PASSED WITH ZERO ERRORS!');
+  console.log('🎉 ALL 25 CANONICAL ROUTES AND MULTILINGUAL SEO CHECKS PASSED WITH ZERO ERRORS!');
   process.exit(0);
 } else {
   console.error('❌ Errors found:');
   errors.forEach(e => console.error('  - ' + e));
   process.exit(1);
 }
+
