@@ -13,8 +13,14 @@ const pages = [
   { file: 'location.html', canonical: `${EXPECTED_DOMAIN}/location.html` },
   { file: 'contact.html', canonical: `${EXPECTED_DOMAIN}/contact.html` },
   { file: 'blog/index.html', canonical: `${EXPECTED_DOMAIN}/blog/` },
+  { file: 'mr/blog/index.html', canonical: `${EXPECTED_DOMAIN}/mr/blog/` },
+  { file: 'hi/blog/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/` },
   { file: 'blog/ladies-haircut-hair-spa-manchar/index.html', canonical: `${EXPECTED_DOMAIN}/blog/ladies-haircut-hair-spa-manchar/` },
   { file: 'blog/maharashtrian-bridal-makeup-manchar/index.html', canonical: `${EXPECTED_DOMAIN}/blog/maharashtrian-bridal-makeup-manchar/` },
+  { file: 'mr/blog/manchar-ladies-haircut-hair-spa/index.html', canonical: `${EXPECTED_DOMAIN}/mr/blog/manchar-ladies-haircut-hair-spa/` },
+  { file: 'mr/blog/manchar-maharashtrian-bridal-makeup/index.html', canonical: `${EXPECTED_DOMAIN}/mr/blog/manchar-maharashtrian-bridal-makeup/` },
+  { file: 'hi/blog/manchar-me-ladies-haircut-hair-spa/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/manchar-me-ladies-haircut-hair-spa/` },
+  { file: 'hi/blog/manchar-me-maharashtrian-bridal-makeup/index.html', canonical: `${EXPECTED_DOMAIN}/hi/blog/manchar-me-maharashtrian-bridal-makeup/` },
 ];
 
 let errors = [];

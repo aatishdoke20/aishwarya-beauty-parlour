@@ -53,6 +53,71 @@
 }
 
 /* --------------------------------------------------------------------------
+   BLOG TOP BAR & MULTILINGUAL SWITCHER
+   -------------------------------------------------------------------------- */
+.blog-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 0 0.5rem;
+}
+
+.blog-top-bar .blog-breadcrumbs {
+  padding: 0;
+}
+
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  box-shadow: var(--shadow-subtle);
+  margin-left: auto;
+}
+
+.lang-switcher .lang-label {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.lang-switcher .lang-btn {
+  color: var(--color-text-espresso);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.lang-switcher .lang-btn:hover {
+  color: var(--color-accent-blush-dark);
+  background: var(--color-bg-ivory);
+}
+
+.lang-switcher .lang-btn.active {
+  background: var(--color-accent-blush-dark);
+  color: #fff;
+  cursor: default;
+}
+
+.lang-switcher .lang-divider {
+  color: var(--color-border-subtle);
+  font-size: 0.75rem;
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
    BLOG INDEX HERO (Magazine Editorial Feel)
    -------------------------------------------------------------------------- */
 .blog-index-hero {

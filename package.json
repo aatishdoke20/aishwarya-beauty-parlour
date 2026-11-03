@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build-blog": "node scripts/build-blog.js",
-    "test": "node scripts/test-blog.js && node scripts/verify_seo.js",
+    "test": "node scripts/test-blog.js && node scripts/verify_seo.js && node scripts/verify_multilingual.js",
     "serve": "node scripts/serve.js"
   },
   "keywords": [

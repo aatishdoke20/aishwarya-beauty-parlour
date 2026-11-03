@@ -161,8 +161,8 @@ Draft body content.
   runTest('Full article text is in initial HTML without client-side JS', () => {
     const article1Html = fs.readFileSync(path.join(ROOT_DIR, 'blog', 'ladies-haircut-hair-spa-manchar', 'index.html'), 'utf8');
     assert.ok(article1Html.includes('A good haircut should suit your hair texture'), 'Initial HTML missing lead paragraph');
-    assert.ok(article1Html.includes('Is a butterfly haircut right for you?'), 'Initial HTML missing H2');
-    assert.ok(article1Html.includes('What does a hair spa add?'), 'Initial HTML missing hair spa section');
+    assert.ok(article1Html.includes('Butterfly cut, layered cut or step cut'), 'Initial HTML missing haircut comparison H2');
+    assert.ok(article1Html.includes('What does a hair spa do?'), 'Initial HTML missing hair spa section');
     assert.ok(article1Html.includes('Shop No. B-5, Shet Ambalal Trust Complex'), 'Initial HTML missing NAP details');
     assert.ok(article1Html.includes('+91 95619 85045'), 'Initial HTML missing studio telephone');
   });
@@ -195,6 +195,22 @@ Draft body content.
     assert.strictEqual(breadcrumbs.itemListElement.length, 3);
     assert.strictEqual(breadcrumbs.itemListElement[0].name, 'Home');
     assert.strictEqual(breadcrumbs.itemListElement[1].name, 'Blog');
+  });
+
+  runTest('Multilingual alternates, html lang and language switchers are valid', () => {
+    const mrHtml = fs.readFileSync(path.join(ROOT_DIR, 'mr', 'blog', 'manchar-ladies-haircut-hair-spa', 'index.html'), 'utf8');
+    const hiHtml = fs.readFileSync(path.join(ROOT_DIR, 'hi', 'blog', 'manchar-me-ladies-haircut-hair-spa', 'index.html'), 'utf8');
+    
+    assert.ok(mrHtml.includes('lang="mr-IN"'), 'Marathi article missing html lang="mr-IN"');
+    assert.ok(hiHtml.includes('lang="hi-IN"'), 'Hindi article missing html lang="hi-IN"');
+
+    assert.ok(mrHtml.includes('hreflang="en-IN"'), 'Marathi article missing en-IN hreflang');
+    assert.ok(mrHtml.includes('hreflang="mr-IN"'), 'Marathi article missing mr-IN hreflang');
+    assert.ok(mrHtml.includes('hreflang="hi-IN"'), 'Marathi article missing hi-IN hreflang');
+    assert.ok(mrHtml.includes('hreflang="x-default"'), 'Marathi article missing x-default hreflang');
+
+    assert.ok(mrHtml.includes('class="lang-btn active"'), 'Marathi article missing active switcher state');
+    assert.ok(hiHtml.includes('class="lang-btn active"'), 'Hindi article missing active switcher state');
   });
 
   // TEST SUITE 7: IMAGE ASSETS & ALT TEXT
