@@ -286,10 +286,33 @@
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
+@media (max-width: 768px) {
+  .blog-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+}
+
 .blog-categories {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+}
+
+@media (max-width: 768px) {
+  .blog-categories {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .blog-categories::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .blog-category-btn {
@@ -305,6 +328,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+@media (max-width: 768px) {
+  .blog-category-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.8125rem;
+  }
 }
 
 .blog-category-btn .cat-count {
@@ -329,6 +361,13 @@
   min-width: 260px;
   max-width: 340px;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .blog-search-box {
+    max-width: 100%;
+    min-width: 0;
+  }
 }
 
 .blog-search-input {
@@ -706,6 +745,13 @@
   margin: 0 auto 4rem;
 }
 
+@media (max-width: 959px) {
+  .article-layout-container {
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
 @media (min-width: 960px) {
   .article-layout-container {
     grid-template-columns: 290px 1fr;
@@ -713,7 +759,18 @@
 }
 
 .article-sidebar {
-  order: 2;
+  order: 1;
+}
+
+@media (max-width: 959px) {
+  .article-sidebar {
+    margin-bottom: 0.5rem;
+  }
+  .article-sidebar .toc-card {
+    background: var(--color-bg-card-warm);
+    border-color: var(--color-border-gold);
+    padding: 1.15rem;
+  }
 }
 
 @media (min-width: 960px) {
@@ -728,7 +785,7 @@
 }
 
 .article-main-content {
-  order: 1;
+  order: 2;
   max-width: 760px;
 }
 
@@ -801,6 +858,13 @@
   font-size: 1.05rem;
   line-height: 1.85;
   color: var(--color-text-espresso);
+}
+
+@media (max-width: 640px) {
+  .article-prose {
+    font-size: 0.9875rem;
+    line-height: 1.75;
+  }
 }
 
 .article-prose p {

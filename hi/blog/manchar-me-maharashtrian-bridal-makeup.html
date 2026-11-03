@@ -268,7 +268,10 @@
 
       <!-- Featured Image Figure -->
       <figure class="article-featured-figure">
-        <img src="/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg" alt="मंचर में पारंपरिक नौवारी साड़ी और आभूषणों में सुसज्जित महाराष्ट्रीयन दुल्हन" fetchpriority="high">
+        <picture>
+          <source type="image/webp" srcset="/images/blog/blog-maharashtrian-bridal-makeup-manchar.webp">
+          <img src="/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg" alt="मंचर में पारंपरिक नौवारी साड़ी और आभूषणों में सुसज्जित महाराष्ट्रीयन दुल्हन" fetchpriority="high" decoding="async" width="960" height="640">
+        </picture>
         <figcaption>पारंपरिक महाराष्ट्रीयन ब्राइडल स्टाइलिंग का प्रात्यक्षिक चित्र। अंतिम पोशाक, मेकअप और आभूषण दुल्हन की पसंद के अनुसार तय किए जाते हैं।</figcaption>
       </figure>
 
@@ -490,7 +493,10 @@
         
           <article class="blog-card">
             <div class="blog-card-media">
-              <img src="/images/facial-treatment.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में फेशियल और स्किनकेयर सेवा" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="/images/blog/blog-facial-in-manchar-how-to-choose.webp">
+                <img src="/images/blog/blog-facial-in-manchar-how-to-choose.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में फेशियल और स्किनकेयर सेवा" loading="lazy" decoding="async" width="600" height="375">
+              </picture>
             </div>
             <div class="blog-card-body">
               <span class="blog-badge">स्किन केयर और फेशियल</span>
@@ -505,7 +511,10 @@
         
           <article class="blog-card">
             <div class="blog-card-media">
-              <img src="/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में महिला के हेयरकट की फिनिशिंग करते हुए स्टाइलिस्ट" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="/images/blog/blog-ladies-haircut-hair-spa-manchar.webp">
+                <img src="/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में महिला के हेयरकट की फिनिशिंग करते हुए स्टाइलिस्ट" loading="lazy" decoding="async" width="600" height="375">
+              </picture>
             </div>
             <div class="blog-card-body">
               <span class="blog-badge">हेयरकेयर और स्टाइलिंग</span>
@@ -648,6 +657,8 @@
       });
     }
   </script>
+  <!-- Instant Page Pre-fetch for Instant Navigation -->
+  <script src="/js/instant-page.js" defer></script>
 
   <!-- ScrollSpy for Table of Contents -->
   <script>

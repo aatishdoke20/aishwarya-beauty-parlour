@@ -14,7 +14,7 @@ publishedAt: "2026-11-03"
 updatedAt: "2026-11-03"
 readingTime: "5 min read"
 featuredImage:
-  src: "/images/service-rica-wax.jpg"
+  src: "/images/blog/blog-waxing-in-manchar-rica-chocolate-soft-wax.jpg"
   alt: "Rica Italian liposoluble wax container with soothing natural ingredients"
   caption: "Illustrative salon image. Discuss suitable waxing formats and skin sensitivity with the team before treatment."
 seo:
@@ -91,3 +91,4 @@ A clean service routine matters. You can politely ask how the area is prepared, 
 Aishwarya Beauty Parlour is listed at Shop No. B-5, Shet Ambalal Trust Complex, near the S.T. Bus Stand, Patilwada, Manchar, Maharashtra 410503. The website lists several waxing formats and separate threading services. For visit navigation from nearby Ambegaon taluka villages, see [directions to the Aishwarya studio in Patilwada](/location.html).
 
 Share the area you want treated when you [check which waxing service is available for your appointment](/contact.html), then confirm the available option, price, timing and current opening hours directly with the studio.
+

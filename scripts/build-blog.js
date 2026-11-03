@@ -525,6 +525,14 @@ function loadAllPosts() {
 }
 
 /**
+ * WebP URL helper
+ */
+function getWebpUrl(src) {
+  if (!src) return '';
+  return src.replace(/\.(jpe?g|png)$/i, '.webp');
+}
+
+/**
  * Shared Header HTML with Multilingual Awareness
  */
 function getHeaderHtml(activePage = 'blog', lang = 'en') {
@@ -759,7 +767,9 @@ function getFooterHtml() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
-  </script>`;
+  </script>
+  <!-- Instant Page Pre-fetch for Instant Navigation -->
+  <script src="/js/instant-page.js" defer></script>`;
 }
 
 /**
@@ -864,7 +874,10 @@ function buildArticlePage(post, allPosts) {
         ${otherPosts.map(op => `
           <article class="blog-card">
             <div class="blog-card-media">
-              <img src="${op.featuredImage.src}" alt="${op.featuredImage.alt}" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="${getWebpUrl(op.featuredImage.src)}">
+                <img src="${op.featuredImage.src}" alt="${op.featuredImage.alt}" loading="lazy" decoding="async" width="600" height="375">
+              </picture>
             </div>
             <div class="blog-card-body">
               <span class="blog-badge">${op.category}</span>
@@ -1067,7 +1080,10 @@ ${getHeaderHtml('blog', lang)}
 
       <!-- Featured Image Figure -->
       <figure class="article-featured-figure">
-        <img src="${post.featuredImage.src}" alt="${post.featuredImage.alt}" fetchpriority="high">
+        <picture>
+          <source type="image/webp" srcset="${getWebpUrl(post.featuredImage.src)}">
+          <img src="${post.featuredImage.src}" alt="${post.featuredImage.alt}" fetchpriority="high" decoding="async" width="960" height="640">
+        </picture>
         ${post.featuredImage.caption ? `<figcaption>${post.featuredImage.caption}</figcaption>` : ''}
       </figure>
 
@@ -1383,7 +1399,10 @@ ${getHeaderHtml('blog', lang)}
         <h2 id="featured-post-heading" class="sr-only">Featured Article</h2>
         <article class="blog-featured-card" data-category="${featuredPost.category}">
           <div class="blog-featured-image-wrap">
-            <img src="${featuredPost.featuredImage.src}" alt="${featuredPost.featuredImage.alt}" fetchpriority="high">
+            <picture>
+              <source type="image/webp" srcset="${getWebpUrl(featuredPost.featuredImage.src)}">
+              <img src="${featuredPost.featuredImage.src}" alt="${featuredPost.featuredImage.alt}" fetchpriority="high" decoding="async" width="960" height="640">
+            </picture>
           </div>
           <div class="blog-featured-content">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
@@ -1415,7 +1434,10 @@ ${getHeaderHtml('blog', lang)}
           ${publishedPosts.map(post => `
             <article class="blog-card" data-category="${post.category}">
               <div class="blog-card-media">
-                <img src="${post.featuredImage.src}" alt="${post.featuredImage.alt}" loading="lazy">
+                <picture>
+                  <source type="image/webp" srcset="${getWebpUrl(post.featuredImage.src)}">
+                  <img src="${post.featuredImage.src}" alt="${post.featuredImage.alt}" loading="lazy" decoding="async" width="600" height="375">
+                </picture>
               </div>
               <div class="blog-card-body">
                 <span class="blog-badge">${post.category}</span>

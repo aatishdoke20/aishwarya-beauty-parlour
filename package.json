@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build-blog": "node scripts/build-blog.js",
+    "optimize-images": "node scripts/optimize-images.js",
     "test": "node scripts/test-blog.js && node scripts/verify_seo.js && node scripts/verify_multilingual.js",
     "serve": "node scripts/serve.js"
   },
@@ -16,5 +17,8 @@
     "cms"
   ],
   "author": "Aishwarya Beauty Parlour",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
 }

@@ -14,7 +14,7 @@ publishedAt: "2026-11-03"
 updatedAt: "2026-11-03"
 readingTime: "5 min read"
 featuredImage:
-  src: "/images/facial-treatment.jpg"
+  src: "/images/blog/blog-facial-in-manchar-how-to-choose.jpg"
   alt: "A relaxing facial cleansing and skincare treatment in a salon setting"
   caption: "Illustrative salon image. Discuss your skin condition and routine with the stylist before choosing a facial."
 seo:
@@ -89,3 +89,4 @@ After the appointment, follow the aftercare instructions given for the products 
 Aishwarya Beauty Parlour is located at Shop No. B-5, Shet Ambalal Trust Complex, near the S.T. Bus Stand, Patilwada, Manchar, Maharashtra 410503. The website lists the studio’s daily hours as 10:30 AM to 8:00 PM; confirm current timings, availability and pricing directly before travelling. For directions from nearby parts of Ambegaon taluka, see [directions to the Patilwada salon](/location.html) before setting out.
 
 To discuss a facial, [ask about an available facial appointment](/contact.html) and share the service you are considering along with any relevant skin sensitivities when you message the studio. This gives the team a clearer starting point for the conversation.
+

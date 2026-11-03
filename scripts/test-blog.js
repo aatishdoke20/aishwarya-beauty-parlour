@@ -251,9 +251,9 @@ Draft body content.
   runTest('Featured images exist on disk and have non-empty alt text', () => {
     const img1 = path.join(ROOT_DIR, 'images', 'blog', 'blog-ladies-haircut-hair-spa-manchar.jpg');
     const img2 = path.join(ROOT_DIR, 'images', 'blog', 'blog-maharashtrian-bridal-makeup-manchar.jpg');
-    const img3 = path.join(ROOT_DIR, 'images', 'facial-treatment.jpg');
-    const img4 = path.join(ROOT_DIR, 'images', 'service-rica-wax.jpg');
-    const img5 = path.join(ROOT_DIR, 'images', 'service-keratin.jpg');
+    const img3 = path.join(ROOT_DIR, 'images', 'blog', 'blog-facial-in-manchar-how-to-choose.jpg');
+    const img4 = path.join(ROOT_DIR, 'images', 'blog', 'blog-waxing-in-manchar-rica-chocolate-soft-wax.jpg');
+    const img5 = path.join(ROOT_DIR, 'images', 'blog', 'blog-keratin-treatment-vs-hair-smoothening-manchar.jpg');
     assert.ok(fs.existsSync(img1), 'Haircut blog image missing from disk');
     assert.ok(fs.existsSync(img2), 'Bridal blog image missing from disk');
     assert.ok(fs.existsSync(img3), 'Facial blog image missing from disk');

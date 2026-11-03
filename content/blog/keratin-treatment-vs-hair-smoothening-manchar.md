@@ -14,7 +14,7 @@ publishedAt: "2026-11-03"
 updatedAt: "2026-11-03"
 readingTime: "5 min read"
 featuredImage:
-  src: "/images/service-keratin.jpg"
+  src: "/images/blog/blog-keratin-treatment-vs-hair-smoothening-manchar.jpg"
   alt: "Keratin protein hair treatment application and smooth finish"
   caption: "Illustrative salon image. Schedule a personal consultation to evaluate hair condition, processing, and aftercare."
 seo:
@@ -94,3 +94,4 @@ Aishwarya Beauty Parlour is located at Shop No. B-5, Shet Ambalal Trust Complex,
 If you are considering a treatment before a wedding or special occasion, allow time for a consultation and review our [Maharashtrian bridal hair and makeup preparation guide](/blog/maharashtrian-bridal-makeup-manchar/) to see how smoothing may affect your planned hairstyle. Do not assume that a smoothing service is necessary for every bridal or occasion look.
 
 To discuss your hair texture and service suitability, [ask the studio about a keratin or smoothening consultation](/contact.html) before confirming a booking.
+

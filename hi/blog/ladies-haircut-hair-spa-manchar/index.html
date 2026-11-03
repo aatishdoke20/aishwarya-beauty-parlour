@@ -268,7 +268,10 @@
 
       <!-- Featured Image Figure -->
       <figure class="article-featured-figure">
-        <img src="/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में महिला के हेयरकट की फिनिशिंग करते हुए स्टाइलिस्ट" fetchpriority="high">
+        <picture>
+          <source type="image/webp" srcset="/images/blog/blog-ladies-haircut-hair-spa-manchar.webp">
+          <img src="/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में महिला के हेयरकट की फिनिशिंग करते हुए स्टाइलिस्ट" fetchpriority="high" decoding="async" width="960" height="640">
+        </picture>
         <figcaption>सैलून का प्रात्यक्षिक चित्र। बालों के टेक्सचर और रूटीन के अनुसार सही हेयरकट चुनने के लिए पहले कन्सल्टेशन लें।</figcaption>
       </figure>
 
@@ -498,7 +501,10 @@
         
           <article class="blog-card">
             <div class="blog-card-media">
-              <img src="/images/service-keratin.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में केराटिन और हेयर स्मूदनिंग सेवा" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="/images/blog/blog-keratin-treatment-vs-hair-smoothening-manchar.webp">
+                <img src="/images/blog/blog-keratin-treatment-vs-hair-smoothening-manchar.jpg" alt="मंचर स्थित ऐश्वर्या ब्यूटी पार्लर में केराटिन और हेयर स्मूदनिंग सेवा" loading="lazy" decoding="async" width="600" height="375">
+              </picture>
             </div>
             <div class="blog-card-body">
               <span class="blog-badge">हेयर ट्रीटमेंट्स</span>
@@ -513,7 +519,10 @@
         
           <article class="blog-card">
             <div class="blog-card-media">
-              <img src="/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg" alt="मंचर में पारंपरिक नौवारी साड़ी और आभूषणों में सुसज्जित महाराष्ट्रीयन दुल्हन" loading="lazy">
+              <picture>
+                <source type="image/webp" srcset="/images/blog/blog-maharashtrian-bridal-makeup-manchar.webp">
+                <img src="/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg" alt="मंचर में पारंपरिक नौवारी साड़ी और आभूषणों में सुसज्जित महाराष्ट्रीयन दुल्हन" loading="lazy" decoding="async" width="600" height="375">
+              </picture>
             </div>
             <div class="blog-card-body">
               <span class="blog-badge">ब्राइडल मेकअप और स्टाइलिंग</span>
@@ -656,6 +665,8 @@
       });
     }
   </script>
+  <!-- Instant Page Pre-fetch for Instant Navigation -->
+  <script src="/js/instant-page.js" defer></script>
 
   <!-- ScrollSpy for Table of Contents -->
   <script>
