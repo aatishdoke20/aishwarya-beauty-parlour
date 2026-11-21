@@ -964,11 +964,13 @@ function buildArticlePage(post, allPosts) {
 <html lang="${strings.htmlLang}">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PC2K9JBD"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHL8S22X8Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
+    gtag('config', 'G-NHL8S22X8Z');
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1277,11 +1279,13 @@ function buildBlogIndexPage(allPublishedPosts, lang = 'en') {
 <html lang="${strings.htmlLang}">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PC2K9JBD"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHL8S22X8Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+
+    gtag('config', 'G-NHL8S22X8Z');
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
