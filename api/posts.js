@@ -66,7 +66,7 @@ function serializeToMarkdown(post) {
   yaml += 'seo:\n';
   yaml += `  title: "${(post.seo?.title || post.title || '').replace(/"/g, '\\"')}"\n`;
   yaml += `  description: "${(post.seo?.description || post.excerpt || '').replace(/"/g, '\\"')}"\n`;
-  yaml += `  canonical: "https://aishwaryabeautyparlour.vercel.app/blog/${post.slug}/"\n`;
+  yaml += `  canonical: "https://www.aishwaryaparlour.in/blog/${post.slug}/"\n`;
   if (post.seo?.focusKeyword) yaml += `  focusKeyword: "${post.seo.focusKeyword}"\n`;
   if (post.seo?.ogImage) yaml += `  ogImage: "${post.seo.ogImage}"\n`;
   yaml += `  noindex: ${Boolean(post.seo?.noindex)}\n`;

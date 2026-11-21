@@ -20,7 +20,7 @@ featuredImage:
 seo:
   title: "मंचर में लेडीज़ हेयरकट और हेयर स्पा | ऐश्वर्या ब्यूटी पार्लर"
   description: "बटरफ्लाई, लेयर्ड और स्टेप कट का अंतर समझें। जानें हेयर स्पा कब चुनें और पाटिलवाडा, मंचर स्थित ऐश्वर्या ब्यूटी पार्लर की विज़िट कैसे तय करें।"
-  canonical: "https://aishwaryabeautyparlour.vercel.app/hi/blog/manchar-me-ladies-haircut-hair-spa/"
+  canonical: "https://www.aishwaryaparlour.in/hi/blog/manchar-me-ladies-haircut-hair-spa/"
   focusKeyword: "Manchar mein ladies haircut"
   relatedKeywords:
     - "Manchar hair spa"
@@ -28,7 +28,7 @@ seo:
     - "butterfly haircut Manchar"
     - "layer cut Manchar"
     - "ladies salon Patilwada"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg"
   noindex: false
 relatedServices:
   - title: "लेडीज़ हेयरकट व स्टाइलिंग मेनू"

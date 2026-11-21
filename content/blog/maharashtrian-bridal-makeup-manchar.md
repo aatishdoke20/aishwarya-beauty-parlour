@@ -20,7 +20,7 @@ featuredImage:
 seo:
   title: "Maharashtrian Bridal Makeup in Manchar | Aishwarya Beauty Parlour"
   description: "Plan a traditional Nauvari or Paithani bridal look in Manchar. Compare traditional styling and HD makeup, learn what to bring, and find studio contact details."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/blog/maharashtrian-bridal-makeup-manchar/"
+  canonical: "https://www.aishwaryaparlour.in/blog/maharashtrian-bridal-makeup-manchar/"
   focusKeyword: "Maharashtrian bridal makeup in Manchar"
   relatedKeywords:
     - "bridal makeup artist in Manchar"
@@ -28,7 +28,7 @@ seo:
     - "Nauvari bridal makeup"
     - "HD bridal makeup Manchar"
     - "bridal styling Manchar"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg"
   noindex: false
 relatedServices:
   - title: "Bridal Makeup & Occasion Styling"

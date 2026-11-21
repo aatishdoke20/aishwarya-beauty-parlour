@@ -26,7 +26,7 @@ const BLOG_OUT_DIR = path.join(ROOT_DIR, 'blog');
 const MR_BLOG_OUT_DIR = path.join(ROOT_DIR, 'mr', 'blog');
 const HI_BLOG_OUT_DIR = path.join(ROOT_DIR, 'hi', 'blog');
 const SITEMAP_PATH = path.join(ROOT_DIR, 'sitemap.xml');
-const BASE_URL = 'https://aishwaryabeautyparlour.vercel.app';
+const BASE_URL = 'https://www.aishwaryaparlour.in';
 
 // Ensure directories exist
 [CONTENT_DIR, BLOG_OUT_DIR, MR_BLOG_OUT_DIR, HI_BLOG_OUT_DIR].forEach(dir => {

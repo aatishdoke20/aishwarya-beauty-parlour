@@ -20,7 +20,7 @@ featuredImage:
 seo:
   title: "Waxing in Manchar: Rica, Chocolate & Regular Wax"
   description: "Compare Rica, chocolate and regular waxing in Manchar. Learn what to ask, basic skin precautions and how to enquire at Aishwarya Beauty Parlour."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/blog/waxing-in-manchar-rica-chocolate-soft-wax/"
+  canonical: "https://www.aishwaryaparlour.in/blog/waxing-in-manchar-rica-chocolate-soft-wax/"
   focusKeyword: "waxing in Manchar"
   relatedKeywords:
     - "Rica wax Manchar"
@@ -28,7 +28,7 @@ seo:
     - "soft wax Manchar"
     - "eyebrow threading Manchar"
     - "waxing parlour Manchar"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/service-rica-wax.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/service-rica-wax.jpg"
   noindex: false
 relatedServices:
   - title: "Waxing & Threading Menu"

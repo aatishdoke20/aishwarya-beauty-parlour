@@ -20,14 +20,14 @@ featuredImage:
 seo:
   title: "Facial in Manchar: How to Choose a Salon Facial"
   description: "Looking for a facial in Manchar? Learn what to discuss before a salon facial, how to prepare, and what to ask at Aishwarya Beauty Parlour, Patilwada."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/blog/facial-in-manchar-how-to-choose/"
+  canonical: "https://www.aishwaryaparlour.in/blog/facial-in-manchar-how-to-choose/"
   focusKeyword: "facial in Manchar"
   relatedKeywords:
     - "facial services Manchar"
     - "ladies facial Manchar"
     - "facial near Patilwada"
     - "beauty parlour for facial Manchar"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/facial-treatment.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/facial-treatment.jpg"
   noindex: false
 relatedServices:
   - title: "Facial Cleansing & Skincare Prep"

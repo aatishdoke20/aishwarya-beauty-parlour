@@ -49,13 +49,13 @@ To activate online publishing, configure the following environment variables in 
 Two complete, locally relevant articles have been published and seeded:
 
 1. **Ladies Haircut and Hair Spa in Manchar: Choosing a Style That Fits Your Hair**
-   - **Public URL**: `https://aishwaryabeautyparlour.vercel.app/blog/ladies-haircut-hair-spa-manchar/`
+   - **Public URL**: `https://www.aishwaryaparlour.in/blog/ladies-haircut-hair-spa-manchar/`
    - **Service Pairs**: Ladies Haircut (layered, butterfly, step) + Hair Spa Therapy
    - **Keywords**: `ladies haircut in Manchar`, `hair spa in Manchar`, `butterfly haircut Manchar`, `layer cut Manchar`
    - **Featured Image**: `/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg`
 
 2. **Maharashtrian Bridal Makeup in Manchar: Traditional Details and HD Finish**
-   - **Public URL**: `https://aishwaryabeautyparlour.vercel.app/blog/maharashtrian-bridal-makeup-manchar/`
+   - **Public URL**: `https://www.aishwaryaparlour.in/blog/maharashtrian-bridal-makeup-manchar/`
    - **Service Pairs**: Traditional Maharashtrian Bridal Makeup + HD Bridal Makeup (Nauvari draping, mundavalya, jewelry)
    - **Keywords**: `bridal makeup artist in Manchar`, `Maharashtrian bridal makeup Manchar`, `HD bridal makeup Manchar`, `Nauvari bridal makeup`
    - **Featured Image**: `/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg`

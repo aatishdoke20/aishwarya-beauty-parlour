@@ -20,7 +20,7 @@ featuredImage:
 seo:
   title: "मंचरमध्ये महाराष्ट्रीयन ब्रायडल मेकअप | ऐश्वर्या ब्युटी पार्लर"
   description: "नऊवारी किंवा पैठणीसोबत पारंपरिक महाराष्ट्रीयन ब्रायडल स्टाइल, HD मेकअप आणि लग्नाच्या दिवसाच्या तयारीसाठी सोपी चेकलिस्ट वाचा."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/mr/blog/manchar-maharashtrian-bridal-makeup/"
+  canonical: "https://www.aishwaryaparlour.in/mr/blog/manchar-maharashtrian-bridal-makeup/"
   focusKeyword: "मंचर ब्रायडल मेकअप"
   relatedKeywords:
     - "महाराष्ट्रीयन नवरी मेकअप मंचर"
@@ -28,7 +28,7 @@ seo:
     - "मंचर HD ब्रायडल मेकअप"
     - "पैठणी ब्रायडल लुक"
     - "मंचर मेकअप आर्टिस्ट"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/blog/blog-maharashtrian-bridal-makeup-manchar.jpg"
   noindex: false
 relatedServices:
   - title: "ब्रायडल मेकअप आणि साडी ड्रेपिंग स्टुडिओ"

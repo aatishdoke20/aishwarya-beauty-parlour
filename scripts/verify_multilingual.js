@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const EXPECTED_DOMAIN = 'https://aishwaryabeautyparlour.vercel.app';
+const EXPECTED_DOMAIN = 'https://www.aishwaryaparlour.in';
 
 const pages = [
   // 7 core pages

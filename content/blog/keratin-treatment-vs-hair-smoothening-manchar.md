@@ -20,14 +20,14 @@ featuredImage:
 seo:
   title: "Keratin vs Hair Smoothening in Manchar"
   description: "Compare keratin treatment and hair smoothening in Manchar. Understand the differences, questions to ask and service details before booking."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/blog/keratin-treatment-vs-hair-smoothening-manchar/"
+  canonical: "https://www.aishwaryaparlour.in/blog/keratin-treatment-vs-hair-smoothening-manchar/"
   focusKeyword: "keratin treatment in Manchar"
   relatedKeywords:
     - "hair smoothening Manchar"
     - "hair botox Manchar"
     - "hair treatment Manchar"
     - "keratin hair treatment Manchar"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/service-keratin.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/service-keratin.jpg"
   noindex: false
 relatedServices:
   - title: "Keratin & Hair Smoothening Menu"

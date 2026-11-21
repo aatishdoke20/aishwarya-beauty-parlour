@@ -20,7 +20,7 @@ featuredImage:
 seo:
   title: "मंचरमध्ये लेडीज हेअरकट आणि हेअर स्पा | ऐश्वर्या ब्युटी पार्लर"
   description: "बटरफ्लाय, लेयर आणि स्टेप कटमधील फरक समजून घ्या. हेअर स्पा कधी निवडावा आणि पाटीलवाडा, मंचर येथील ऐश्वर्या ब्युटी पार्लरला भेट कशी ठरवावी."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/mr/blog/manchar-ladies-haircut-hair-spa/"
+  canonical: "https://www.aishwaryaparlour.in/mr/blog/manchar-ladies-haircut-hair-spa/"
   focusKeyword: "मंचर लेडीज हेअरकट"
   relatedKeywords:
     - "मंचरमध्ये हेअर स्पा"
@@ -28,7 +28,7 @@ seo:
     - "लेयर कट मंचर"
     - "पाटीलवाडा लेडीज सलून"
     - "मंचर ब्युटी पार्लर"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg"
   noindex: false
 relatedServices:
   - title: "लेडीज हेअरकट व स्टाइलिंग सेवा"

@@ -20,7 +20,7 @@ featuredImage:
 seo:
   title: "Ladies Haircut & Hair Spa in Manchar | Aishwarya Beauty Parlour"
   description: "Compare butterfly, layered and step cuts, learn when to choose a hair spa, and plan a visit to Aishwarya Beauty Parlour in Patilwada, Manchar."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/blog/ladies-haircut-hair-spa-manchar/"
+  canonical: "https://www.aishwaryaparlour.in/blog/ladies-haircut-hair-spa-manchar/"
   focusKeyword: "ladies haircut in Manchar"
   relatedKeywords:
     - "hair spa in Manchar"
@@ -28,7 +28,7 @@ seo:
     - "layer cut in Manchar"
     - "ladies salon in Manchar"
     - "hair treatment Manchar"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/blog/blog-ladies-haircut-hair-spa-manchar.jpg"
   noindex: false
 relatedServices:
   - title: "Ladies Haircut & Hairdressing Menu"

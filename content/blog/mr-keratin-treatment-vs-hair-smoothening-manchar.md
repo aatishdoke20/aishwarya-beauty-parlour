@@ -20,14 +20,14 @@ featuredImage:
 seo:
   title: "मंचरमध्ये केराटिन की हेअर स्मूथनिंग? उपचार निवडण्यापूर्वी जाणून घ्या | ऐश्वर्या ब्युटी पार्लर"
   description: "मंचरमध्ये केराटिन ट्रीटमेंट आणि हेअर स्मूथनिंगची तुलना करा. केसांचा पोत, लागणारा वेळ, सुरक्षितता आणि ऐश्वर्या ब्युटी पार्लरमधील हेअर सेवा जाणून घ्या."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/mr/blog/keratin-treatment-vs-hair-smoothening-manchar/"
+  canonical: "https://www.aishwaryaparlour.in/mr/blog/keratin-treatment-vs-hair-smoothening-manchar/"
   focusKeyword: "मंचरमध्ये केराटिन ट्रीटमेंट"
   relatedKeywords:
     - "हेअर स्मूथनिंग मंचर"
     - "हेअर बोटॉक्स मंचर"
     - "हेअर ट्रीटमेंट मंचर"
     - "केराटिन हेअर ट्रीटमेंट मंचर"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/service-keratin.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/service-keratin.jpg"
   noindex: false
 relatedServices:
   - title: "केराटिन व हेअर स्मूथनिंग मेनू"

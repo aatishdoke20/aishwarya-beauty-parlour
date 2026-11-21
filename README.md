@@ -70,7 +70,7 @@ python -m http.server 3000
 Open `http://localhost:3000/` in your web browser.
 
 ### Production Deployment:
-- **Primary Canonical Production (Vercel)**: `https://aishwaryabeautyparlour.vercel.app/`
+- **Primary Canonical Production (Vercel)**: `https://www.aishwaryaparlour.in/`
 - **Static Mirror (GitHub Pages)**: `https://aatishdoke20.github.io/aishwarya-beauty-parlour/`
 
 ### Deploying to GitHub Pages:

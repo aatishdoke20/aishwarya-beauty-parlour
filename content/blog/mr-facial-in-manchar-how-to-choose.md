@@ -20,14 +20,14 @@ featuredImage:
 seo:
   title: "मंचरमध्ये फेशियल: आपल्या त्वचेसाठी योग्य सेवा कशी निवडावी | ऐश्वर्या ब्युटी पार्लर"
   description: "मंचरमध्ये फेशियल करताना काय काळजी घ्यावी? त्वचेच्या प्रकारानुसार योग्य फेशियल, तयारी आणि पाटीलवाडा येथील ऐश्वर्या ब्युटी पार्लरच्या सेवा जाणून घ्या."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/mr/blog/facial-in-manchar-how-to-choose/"
+  canonical: "https://www.aishwaryaparlour.in/mr/blog/facial-in-manchar-how-to-choose/"
   focusKeyword: "मंचरमध्ये फेशियल"
   relatedKeywords:
     - "मंचर फेशियल सेवा"
     - "मंचर ब्युटी पार्लर फेशियल"
     - "पाटीलवाडा फेशियल"
     - "लेडीज फेशियल मंचर"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/facial-treatment.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/facial-treatment.jpg"
   noindex: false
 relatedServices:
   - title: "फेशियल क्लिन्सिंग व स्किनकेअर"

@@ -20,7 +20,7 @@ featuredImage:
 seo:
   title: "मंचरमध्ये वॅक्सिंग: रिका, चॉकलेट की रेग्युलर वॅक्स? | ऐश्वर्या ब्युटी पार्लर"
   description: "मंचरमध्ये वॅक्सिंग करताना रिका, चॉकलेट आणि रेग्युलर वॅक्सची तुलना करा. त्वचेची काळजी, घ्यावयाची खबरदारी आणि ऐश्वर्या ब्युटी पार्लरमधील पर्याय जाणून घ्या."
-  canonical: "https://aishwaryabeautyparlour.vercel.app/mr/blog/waxing-in-manchar-rica-chocolate-soft-wax/"
+  canonical: "https://www.aishwaryaparlour.in/mr/blog/waxing-in-manchar-rica-chocolate-soft-wax/"
   focusKeyword: "मंचरमध्ये वॅक्सिंग"
   relatedKeywords:
     - "रिका वॅक्स मंचर"
@@ -28,7 +28,7 @@ seo:
     - "सॉफ्ट वॅक्स मंचर"
     - "आयब्रो थ्रेडिंग मंचर"
     - "लेडीज वॅक्सिंग पार्लर मंचर"
-  ogImage: "https://aishwaryabeautyparlour.vercel.app/images/service-rica-wax.jpg"
+  ogImage: "https://www.aishwaryaparlour.in/images/service-rica-wax.jpg"
   noindex: false
 relatedServices:
   - title: "वॅक्सिंग आणि थ्रेडिंग मेनू"

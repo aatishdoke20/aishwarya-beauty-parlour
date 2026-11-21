@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const EXPECTED_DOMAIN = 'https://aishwaryabeautyparlour.vercel.app';
+const EXPECTED_DOMAIN = 'https://www.aishwaryaparlour.in';
 
 const pages = [
   { file: 'index.html', canonical: `${EXPECTED_DOMAIN}/` },
@@ -42,7 +42,7 @@ if (!robotsContent.includes(`Sitemap: ${EXPECTED_DOMAIN}/sitemap.xml`)) {
 } else {
   console.log('✅ robots.txt points to correct sitemap URL');
 }
-if (robotsContent.includes('.in') || robotsContent.includes('workers.dev')) {
+if (robotsContent.includes('vercel.app') || robotsContent.includes('workers.dev')) {
   errors.push('robots.txt contains stale domain references');
 }
 
@@ -56,7 +56,7 @@ pages.forEach(p => {
     console.log(`✅ sitemap.xml contains: ${p.canonical}`);
   }
 });
-if (sitemapContent.includes('.in') || sitemapContent.includes('workers.dev')) {
+if (sitemapContent.includes('vercel.app') || sitemapContent.includes('workers.dev')) {
   errors.push('sitemap.xml contains stale domain references');
 }
 

@@ -7,4 +7,4 @@ Allow: /blog/
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://aishwaryabeautyparlour.vercel.app/sitemap.xml
+Sitemap: https://www.aishwaryaparlour.in/sitemap.xml

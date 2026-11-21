@@ -217,7 +217,7 @@ Draft body content.
     assert.strictEqual(blogPosting['@type'], 'BlogPosting');
     assert.strictEqual(blogPosting.author.name, 'Varsha Doke');
     assert.strictEqual(blogPosting.publisher.name, 'Aishwarya Beauty Parlour Manchar');
-    assert.strictEqual(blogPosting.mainEntityOfPage['@id'], 'https://aishwaryabeautyparlour.vercel.app/blog/ladies-haircut-hair-spa-manchar/');
+    assert.strictEqual(blogPosting.mainEntityOfPage['@id'], 'https://www.aishwaryaparlour.in/blog/ladies-haircut-hair-spa-manchar/');
   });
 
   runTest('BreadcrumbList JSON-LD matches visible breadcrumbs', () => {
