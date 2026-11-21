@@ -963,6 +963,13 @@ function buildArticlePage(post, allPosts) {
   return `<!DOCTYPE html>
 <html lang="${strings.htmlLang}">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PC2K9JBD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${seoTitle}</title>
@@ -1269,6 +1276,13 @@ function buildBlogIndexPage(allPublishedPosts, lang = 'en') {
   return `<!DOCTYPE html>
 <html lang="${strings.htmlLang}">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PC2K9JBD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${strings.archiveMetaTitle}</title>
