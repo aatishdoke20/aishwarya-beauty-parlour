@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="35%" stop-color="#F3E5AB"/>
+      <stop offset="65%" stop-color="#AA7A1E"/>
+      <stop offset="100%" stop-color="#7B5512"/>
+    </linearGradient>
+    <linearGradient id="blushGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A65355"/>
+      <stop offset="100%" stop-color="#752B2D"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F7F1E6"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#7B5512" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="248" fill="url(#bgGrad)"/>
+  
+  <!-- Outer Decorative Ring -->
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
+  <circle cx="256" cy="256" r="228" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="4,6"/>
+  <circle cx="256" cy="256" r="218" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+
+  <!-- Botanical Wreath Accents (Left & Right) -->
+  <g fill="url(#goldGrad)" opacity="0.85">
+    <!-- Left Leaves -->
+    <path d="M120 256 C115 230 130 205 145 190 C140 210 135 235 140 256 Z"/>
+    <path d="M110 280 C110 305 125 325 142 335 C135 315 130 295 132 280 Z"/>
+    <!-- Right Leaves -->
+    <path d="M392 256 C397 230 382 205 367 190 C372 210 377 235 372 256 Z"/>
+    <path d="M402 280 C402 305 387 325 370 335 C377 315 382 295 380 280 Z"/>
+  </g>
+
+  <!-- Central Crest Emblem: Ornate 'A' -->
+  <g filter="url(#shadow)">
+    <!-- Main Letter A in Cormorant / Didot Editorial Serif Style -->
+    <path d="M256 96 L278 96 L356 320 L318 320 L298 260 L214 260 L194 320 L156 320 L234 96 Z M256 142 L225 234 L287 234 Z" fill="url(#blushGrad)"/>
+    
+    <!-- Gold Serif Accents & Crown Flourish -->
+    <!-- Crown / Tiara Flourish above A -->
+    <path d="M256 70 C262 82 272 88 285 88 C275 92 265 92 256 86 C247 92 237 92 227 88 C240 88 250 82 256 70 Z" fill="url(#goldGrad)"/>
+    <circle cx="256" cy="62" r="5" fill="url(#goldGrad)"/>
+    <circle cx="236" cy="74" r="3.5" fill="url(#goldGrad)"/>
+    <circle cx="276" cy="74" r="3.5" fill="url(#goldGrad)"/>
+
+    <!-- Crossbar Floral Scroll -->
+    <path d="M210 248 Q256 262 302 248 Q256 254 210 248 Z" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- Ribbon / Brand Banner -->
+  <g>
+    <!-- Brand Name Text -->
+    <text x="256" y="375" text-anchor="middle" font-family="'Marcellus', 'Cormorant Garamond', 'Georgia', serif" font-size="28" font-weight="700" letter-spacing="4" fill="#752B2D">AISHWARYA</text>
+    <text x="256" y="405" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif" font-size="14" font-weight="600" letter-spacing="3" fill="#8C6521">BEAUTY PARLOUR</text>
+    <text x="256" y="428" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Segoe UI', sans-serif" font-size="11" font-weight="500" letter-spacing="4" fill="#AA7A1E">MANCHAR</text>
+    
+    <!-- Stars / Diamond separator -->
+    <path d="M256 442 L258 447 L263 447 L259 450 L261 455 L256 452 L251 455 L253 450 L249 447 L254 447 Z" fill="url(#goldGrad)"/>
+  </g>
+</svg>

@@ -1231,3 +1231,19 @@
 .inline-blog-guide-card a:hover {
   color: var(--color-accent-gold-dark);
 }
+
+/* --------------------------------------------------------------------------
+   BRAND CREST LOGO
+   -------------------------------------------------------------------------- */
+.brand-crest {
+  overflow: hidden;
+}
+
+.brand-crest-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-full);
+}
+

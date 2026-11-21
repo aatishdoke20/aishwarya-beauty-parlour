@@ -570,7 +570,7 @@ function getHeaderHtml(activePage = 'blog', lang = 'en') {
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a href="/index.html" class="brand-lockup" aria-label="Aishwarya Beauty Parlour Manchar - Home">
-        <div class="brand-crest" aria-hidden="true">A</div>
+        <div class="brand-crest" aria-hidden="true"><img src="/images/logo.svg" alt="Aishwarya Beauty Parlour Logo" class="brand-crest-img" width="44" height="44"></div>
         <div class="brand-text">
           <span class="brand-name">Aishwarya Beauty Parlour</span>
           <span class="brand-location">Manchar</span>
@@ -925,7 +925,7 @@ function buildArticlePage(post, allPosts) {
       "url": BASE_URL,
       "logo": {
         "@type": "ImageObject",
-        "url": `${BASE_URL}/images/bridal-hero.jpg`
+        "url": `${BASE_URL}/images/logo.png`
       }
     },
     "mainEntityOfPage": {
@@ -1001,8 +1001,15 @@ function buildArticlePage(post, allPosts) {
   <link rel="stylesheet" href="/css/style.css?v=3.0">
   <link rel="stylesheet" href="/css/blog.css?v=1.4">
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23FAF7F2%22 stroke=%22%23B5893B%22 stroke-width=%224%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2246%22 font-weight=%22bold%22 fill=%22%238C6521%22 text-anchor=%22middle%22>A</text></svg>">
+  <!-- Favicons & App Icons (Google Search & Multi-device compliant) -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- JSON-LD Structured Data: BlogPosting -->
   <script type="application/ld+json">
@@ -1236,6 +1243,10 @@ function buildBlogIndexPage(allPublishedPosts, lang = 'en') {
       "@type": "BeautySalon",
       "name": "Aishwarya Beauty Parlour",
       "telephone": "+91 95619 85045",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${BASE_URL}/images/logo.png`
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Shop No. B-5, Shet Ambalal Trust Complex, Near S.T. Bus Stand, Patilwada",
@@ -1293,8 +1304,15 @@ function buildBlogIndexPage(allPublishedPosts, lang = 'en') {
   <link rel="stylesheet" href="/css/style.css?v=3.0">
   <link rel="stylesheet" href="/css/blog.css?v=1.4">
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2246%22 fill=%22%23FAF7F2%22 stroke=%22%23B5893B%22 stroke-width=%224%22/><text x=%2250%22 y=%2260%22 font-family=%22Georgia,serif%22 font-size=%2246%22 font-weight=%22bold%22 fill=%22%238C6521%22 text-anchor=%22middle%22>A</text></svg>">
+  <!-- Favicons & App Icons (Google Search & Multi-device compliant) -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- JSON-LD Structured Data: Blog -->
   <script type="application/ld+json">
